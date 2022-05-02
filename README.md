@@ -2,8 +2,8 @@
 Dox with the powers of searchs engines!
 
 <h2> Annuaire : ✅(still not finished yet, I need to add API) </h2>
-<h2> Dorks : ✅ </h2>
-<h2> Email : ✅ </h2>
+<h2> Dorks : ✅ (BETA)</h2>
+<h2> Email : ✅ (I need to add EPIEOS API)</h2>
 <h2> Google : ✅ </h2>
 <h2> Yahoo : ❌ </h2>
 <h2> Bing : ❌ </h2>
