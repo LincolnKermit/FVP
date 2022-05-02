@@ -1,5 +1,9 @@
 # Finder V-Nitro
 Dox with the powers of searchs engines!
+
+<h2> Annuaire : ✅(still not finished yet, I need to add API) </h2>
+<h2> Dorks : ✅ </h2>
+<h2> Email : ✅ </h2>
 <h2> Google : ✅ </h2>
 <h2> Yahoo : ❌ </h2>
 <h2> Bing : ❌ </h2>
@@ -14,10 +18,7 @@ Dox with the powers of searchs engines!
  <h1> <h1>
  <h2> Install library <h2>
 
- <h4> Then, go to cmd and browse to the directory. <h4>
-   <h4> It will something like that : cd C:/yourname/Downloads/FinderV-Pro-main <h4>
-  <h4> When you are in the directory, type "pip install -r /path/to/requirements.txt" <h4>
-    <h4> It will install modules and library.<h4>
+ <h4> Browse to the directory, and launch setup.bat <h4>
 <h1> <h1>
 <h2> Launch it <h2>
   
