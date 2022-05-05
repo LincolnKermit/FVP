@@ -1,5 +1,5 @@
-#Made by Lincoln#0666 aka github.com/FM9442
-# Version 0.5
+#Made by Lincoln#4504 aka github.com/LincolnKermit
+# Version 1.3
 from asyncio.windows_events import NULL
 from plyer import notification
 from operator import index
@@ -12,7 +12,7 @@ from colorama import init
 from colorama import Fore, Back, Style
 init()
 
-version                          ="1.1"
+version                          ="1.3"
 dorks_selected                   =NULL
 indexfonction                    ='"'
 str(indexfonction)
@@ -20,19 +20,19 @@ str(indexfonction)
 os.system("cls")
 print("")
 notification.notify(
-    title='Finder V-Nitro',
+    title='Finder V-Pro',
     message="Le pouvoir de l'osint dans vos mains.",
     app_icon=None,
-    timeout=10,
+    timeout=5,
 )
-print(Fore.LIGHTRED_EX + "Bienvenue sur Finder V-Nitro!")
-print(Fore.WHITE + "https://github.com/FM9442/FinderV-Pro")
-print(Fore.BLUE + "Discord : Lincoln#0666")
+print(Fore.LIGHTRED_EX + "Bienvenue sur Finder V-Pro!")
+print(Fore.WHITE + "https://github.com/LincolnKermit/FVP")
+print(Fore.BLUE + "Discord : Lincoln#4504")
 print(Fore.MAGENTA + "Version : " + version )
 print(Style.RESET_ALL)
 time.sleep(1)
 print("")
-input("Press Enter to launch Finder V-Nitro...")
+input("Press Enter to launch Finder V-Pro...")
 os.system("cls")
 print("Launched!")
 time.sleep(1)
@@ -60,7 +60,7 @@ if choixversion==choixname:
             count += 1
             print (count)
             print(i + '\n')
-   print(Fore.BLUE + "V-Nitro " + version + " running on ",sys.version)
+   print(Fore.BLUE + "V-Pro " + version + " running on ",sys.version)
    print(Style.RESET_ALL)
 
    print(Fore.BLUE + "G" + Fore.RED + "o" + Fore.YELLOW + "o" + Fore.BLUE + "g" + Fore.GREEN + "l" + Fore.RED + "e")
@@ -100,7 +100,7 @@ if choixversion==choixname:
    os.system("cls")
 
    while anwser == yesanwser:
-      print(Fore.BLUE + "V-Nitro " + version + " running on ",sys.version)
+      print(Fore.BLUE + "V-Pro " + version + " running on ",sys.version)
 
       time.sleep(1.5)
       Lastname=input(Fore.MAGENTA + "Nom de famille précis : ")
@@ -130,7 +130,7 @@ if choixversion==choixemail:
             count += 1
             print (count)
             print(i + '\n')
-   print(Fore.BLUE + "V-Nitro " + version + " running on ",sys.version)
+   print(Fore.BLUE + "V-Pro " + version + " running on ",sys.version)
    print(Style.RESET_ALL)
 
    print(Fore.BLUE + "G" + Fore.RED + "o" + Fore.YELLOW + "o" + Fore.BLUE + "g" + Fore.GREEN + "l" + Fore.RED + "e")
@@ -174,7 +174,7 @@ if choixversion==choixdorks:
       time.sleep(0.5)
       os.system("cls")
       print("Dorks en cours...")
-   print(Fore.BLUE + "V-Nitro " + version + " running on ",sys.version)
+   print(Fore.BLUE + "V-Pro " + version + " running on ",sys.version)
    print(Style.RESET_ALL)
    print(Fore.BLUE + "G" + Fore.RED + "o" + Fore.YELLOW + "o" + Fore.BLUE + "g" + Fore.GREEN + "l" + Fore.RED + "e")
    print(Style.RESET_ALL)
