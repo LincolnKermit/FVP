@@ -1,6 +1,7 @@
 # Finder V-Nitro
 Dox with the powers of searchs engines!
 
+<h2> API Added : Root-Me, Github <h2>
 <h2> Annuaire : ✅(still not finished yet, I need to add API) </h2>
 <h2> Dorks : ✅ (BETA)</h2>
 <h2> Email : ✅ (I need to add EPIEOS API)</h2>
