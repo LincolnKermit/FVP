@@ -25,7 +25,7 @@ Dox with the powers of searchs engines!
 
  <h4> Browse to the directory, and launch setup.bat <h4>
 <h1> <h1>
-<img src="https://cdn.discordapp.com/attachments/971040198945280000/973720196743303208/unknown.png"> </img>
+<img src="https://cdn.discordapp.com/attachments/971040198945280000/973723397819338872/unknown.png"> </img>
 <h2> Launch it <h2>
   
   <h4> type in the cmd at the path of the program : python "Finder V-Pro.py"  <h4>
