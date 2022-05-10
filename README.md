@@ -3,7 +3,7 @@ Dox with the powers of searchs engines!
 
 
 
-https://cdn.discordapp.com/attachments/971040198945280000/973718894831341628/unknown.png
+[IMG] https://cdn.discordapp.com/attachments/971040198945280000/973718894831341628/unknown.png [/IMG]
 <h2> API Added : Root-Me, Github <h2>
 <h2> Annuaire : ✅(still not finished yet, I need to add API) </h2>
 <h2> Dorks : ✅ (BETA)</h2>
