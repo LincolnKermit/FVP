@@ -29,3 +29,4 @@ Dox with the powers of searchs engines!
 <h2> Launch it <h2>
   
   <h4> type in the cmd at the path of the program : python "Finder V-Nitro.py"  <h4>
+<img src="https://cdn.discordapp.com/attachments/971040198945280000/973720686633820162/unknown.png"> </img>
