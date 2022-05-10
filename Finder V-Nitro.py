@@ -1,5 +1,5 @@
 #Made by Lincoln#4504 aka github.com/LincolnKermit
-# Version 1.5
+# Version 1.6
 from asyncio.windows_events import NULL
 from plyer import notification
 from operator import index
@@ -12,7 +12,7 @@ from colorama import init
 from colorama import Fore, Back, Style
 init()
 
-version                          ="1.5"
+version                          ="1.6"
 dorks_selected                   =NULL
 indexfonction                    ='"'
 str(indexfonction)
@@ -35,9 +35,9 @@ print("""""
 ╚═╝       ╚═══╝  ╚═╝     
                                                                                                       
 """"")
-print(Fore.LIGHTRED_EX + "Bienvenue sur Finder V-Nitro!")
-print(Fore.WHITE + "https://github.com/FM9442/FinderV-Pro")
-print(Fore.BLUE + "Discord : Lincoln#0666")
+print(Fore.LIGHTRED_EX + "Bienvenue sur Finder V-Pro!")
+print(Fore.WHITE + "https://github.com/LincolnKermit/FVP")
+print(Fore.BLUE + "Discord : Lincoln#4504")
 print(Fore.MAGENTA + "Version : " + version )
 print(Style.RESET_ALL)
 time.sleep(1)
