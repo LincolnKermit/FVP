@@ -2,7 +2,7 @@
 Dox with the powers of searchs engines!
 
 
-<img src="https://cdn.discordapp.com/attachments/971040198945280000/973718894831341628/unknown.png </img>
+<img src="https://cdn.discordapp.com/attachments/971040198945280000/973718894831341628/unknown.png"> </img>
 
 
 <h2> API Added : Root-Me, Github <h2>
