@@ -19,9 +19,8 @@ str(indexfonction)
 anwser                           ="y"
 
 os.system("cls")
-print("")
 notification.notify(
-    title='Finder V-Nitro',
+    title='Finder V-Pro',
     message="Le pouvoir de l'osint dans vos mains.",
     app_icon=None,
     timeout=10,
@@ -37,12 +36,12 @@ print("""""
 """"")
 print(Fore.LIGHTRED_EX + "Bienvenue sur Finder V-Pro!")
 print(Fore.WHITE + "https://github.com/LincolnKermit/FVP")
-print(Fore.BLUE + "Discord : Lincoln#4504")
+print(Fore.BLUE + "Discord : Lincoln#0666")
 print(Fore.MAGENTA + "Version : " + version )
 print(Style.RESET_ALL)
 time.sleep(1)
 print("")
-input("Press Enter to launch Finder V-Nitro...")
+input("Press Enter to launch Finder V-Pro...")
 os.system("cls")
 print("Launched!")
 
@@ -74,7 +73,7 @@ while anwser =="y":
                count += 1
                print (count)
                print(i + '\n')
-      print(Fore.BLUE + "V-Nitro " + version + " running on ",sys.version)
+      print(Fore.BLUE + "V-Pro " + version + " running on ",sys.version)
       print(Style.RESET_ALL)
 
       print(Fore.BLUE + "G" + Fore.RED + "o" + Fore.YELLOW + "o" + Fore.BLUE + "g" + Fore.GREEN + "l" + Fore.RED + "e")
@@ -128,7 +127,7 @@ while anwser =="y":
                count += 1
                print (count)
                print(i + '\n')
-      print(Fore.BLUE + "V-Nitro " + version + " running on ",sys.version)
+      print(Fore.BLUE + "V-Pro " + version + " running on ",sys.version)
       print(Style.RESET_ALL)
 
       print(Fore.BLUE + "G" + Fore.RED + "o" + Fore.YELLOW + "o" + Fore.BLUE + "g" + Fore.GREEN + "l" + Fore.RED + "e")
@@ -200,7 +199,7 @@ while anwser =="y":
          time.sleep(0.5)
          os.system("cls")
          print("Dorks en cours...")
-      print(Fore.BLUE + "V-Nitro " + version + " running on ",sys.version)
+      print(Fore.BLUE + "V-Pro " + version + " running on ",sys.version)
       print(Style.RESET_ALL)
       print(Fore.BLUE + "G" + Fore.RED + "o" + Fore.YELLOW + "o" + Fore.BLUE + "g" + Fore.GREEN + "l" + Fore.RED + "e")
       print(Style.RESET_ALL)
