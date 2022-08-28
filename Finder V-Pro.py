@@ -1,6 +1,10 @@
-#Made by Lincoln#4504 aka github.com/LincolnKermit
-# Version 1.6
+# Made by Lincoln#???? aka github.com/LincolnKermit
+# Version 2.1
+# Should I make a website? send feedback by star!
+# I tried to contact Epieos for their API but no one responded.
+# Number Lookup soon!
 from asyncio.windows_events import NULL
+import cmd
 from plyer import notification
 from operator import index
 import time, os, sys, lxml, requests, json
@@ -12,11 +16,12 @@ from colorama import init
 from colorama import Fore, Back, Style
 init()
 
-version                          ="1.6"
+
+version                          ="2.1"
 dorks_selected                   =NULL
 indexfonction                    ='"'
-str(indexfonction)
 anwser                           ="y"
+str(indexfonction)
 
 os.system("cls")
 notification.notify(
@@ -25,7 +30,7 @@ notification.notify(
     app_icon=None,
     timeout=10,
 )
-print("""""
+print("""
 ███████╗██╗   ██╗██████╗ 
 ██╔════╝██║   ██║██╔══██╗
 █████╗  ██║   ██║██████╔╝
@@ -36,7 +41,7 @@ print("""""
 """"")
 print(Fore.LIGHTRED_EX + "Bienvenue sur Finder V-Pro!")
 print(Fore.WHITE + "https://github.com/LincolnKermit/FVP")
-print(Fore.BLUE + "Discord : Lincoln#0666")
+print(Fore.BLUE + "Discord : Lincoln#????")
 print(Fore.MAGENTA + "Version : " + version )
 print(Style.RESET_ALL)
 time.sleep(1)
@@ -108,7 +113,7 @@ while anwser =="y":
       print("Non disponible")
       print("")
       print(Style.RESET_ALL)
-      input("Appuyez sur une touche pour continuer...")
+      input("Appuyez sur entrer pour continuer...")
       os.system("cls")
    if choixversion==choixemail:
       email=input("Email : ")
@@ -135,7 +140,7 @@ while anwser =="y":
       if __name__=='__main__':
          gs = Gsearch_python(indexfonction+email+indexfonction)
          gs.Gsearch()
-      input("Appuyez sur une touche pour continuer...")
+      input("Appuyez sur entrer pour continuer...")
 
    if choixversion==choixusername:
       (Fore.MAGENTA + "Username")
@@ -143,6 +148,16 @@ while anwser =="y":
       time.sleep(0.5)
       os.system("cls")
       username=input("username : ")
+      os.system("cls")
+      response = requests.get('https://github.com/' + username)
+      if response.status_code == 200:
+         print("User found on Root-Me")
+         print("https://root-me.org/" + username)
+         print("")
+      elif response.status_code == 404:
+         print("User doesn't seems to exist on Root-Me")
+
+
       response = requests.get('https://github.com/' + username)
       if response.status_code == 200:
          print("User found on Github")
@@ -150,18 +165,9 @@ while anwser =="y":
          print("https://github.com/" + username)
          print("")
       elif response.status_code == 404:
-         print("User doesn't seems to exist.")
-
-      response = requests.get('https://www.root-me.org/' + username)
-      if response.status_code == 200:
-         print("User found on root-me.org")
-         time.sleep(1)
-         print("https://www.root-me.org/" + username)
-         print("")
-      elif response.status_code == 404:
-         print("User doesn't seems to exist on root-me.org ")
+         print("User doesn't seems to exist on Github")
       print("")
-      input("Appuyez sur une touche pour continuer...")
+      input("Appuyez sur entrer pour continuer...")
 
 
 
@@ -230,7 +236,7 @@ while anwser =="y":
       if __name__=='__main__':
          gs = Gsearch_python(dorksmodulesaddons)
          gs.Gsearch()      
-      input("Appuyez sur une touche pour continuer...")
+      input("Appuyez sur entrer pour continuer...")
 
    else:
       ("Mauvaise saisie")
