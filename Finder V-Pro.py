@@ -2,7 +2,10 @@
 # Version 2.1
 # Should I make a website? send feedback by star!
 # I tried to contact Epieos for their API but no one responded.
-# Number Lookup soon!
+# Number Lookup soon
+
+
+from flask import Flask, render_template
 from asyncio.windows_events import NULL
 import cmd
 from plyer import notification
@@ -16,8 +19,8 @@ from colorama import init
 from colorama import Fore, Back, Style
 init()
 
-
-version                          ="2.1"
+keywordfr                        ="fr"
+version                          ="3"
 dorks_selected                   =NULL
 indexfonction                    ='"'
 anwser                           ="y"
@@ -78,6 +81,7 @@ while anwser =="y":
                count += 1
                print (count)
                print(i + '\n')
+               
       print(Fore.BLUE + "V-Pro " + version + " running on ",sys.version)
       print(Style.RESET_ALL)
 
