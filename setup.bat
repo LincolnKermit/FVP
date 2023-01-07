@@ -20,6 +20,7 @@ pip install sys
 pip install lxml
 pip install selenium
 pip install bs4
+pip install flask
 pip install colorama
 pip install serpapi
 pip install requests
