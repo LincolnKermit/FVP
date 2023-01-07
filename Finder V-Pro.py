@@ -1,6 +1,5 @@
 # Made by Lincoln#???? aka github.com/LincolnKermit
-# Version 3!
-# API Added!
+# Version 2.1
 # Should I make a website? send feedback by star!
 # I tried to contact Epieos for their API but no one responded.
 # Number Lookup soon
