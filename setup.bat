@@ -31,5 +31,5 @@ pip install google
 pip3 install -r requirements.txt
 pip install -r requirements.txt
 color
-Python "Finder V-Nitro"
+echo Termine!
 pause
