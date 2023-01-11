@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Engine</title>
+        <link rel="icon" href="favicon.ico" />
         <link rel="stylesheet" type="text/css" href="../static/styles/style.css" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
@@ -9,6 +10,9 @@
     <script>
     var goToAddress = function(){
         window.open("https://www.google.com/maps/dir//{{ street }}","_blank");
+    };
+    var goToGithub = function(){
+        window.open("https://www.github.com/LincolnKermit/FVP","_blank");
     };
     </script>
     <video autoplay muted loop id="myVideo">
@@ -22,13 +26,16 @@
         <p>☎️ Téléphone : {{ phone }}</p>
         <input type="button" name="" value="S'y rendre" class="submit" onclick="goToAddress();">
         <input type="button" class="submit" name="" value="Appeller" href="tel:{{ phone }}">
+        <input type="button" name="" value="Notez notre projet ⭐" class="submit" onclick="goToGithub();">
+        <p>Coded with ❤️</p>
       </form>
     </div>
     {% endif %}
     {% if error == True %}
-    <div class="content2">
-      <h1>Vous avez été limité!</h1>
-    </div>
+    <form class="box">
+      <p>⚠️ Alerte : Peu d'informations trouvés</p>
+      <p>Vous avez peut être été limité!</p>
+    </form>
     {% endif %}
     <body>
 </html>
