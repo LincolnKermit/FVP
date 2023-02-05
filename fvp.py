@@ -1,6 +1,6 @@
 # Made by Lincoln#???? aka github.com/LincolnKermit
-# Version 3
-# send feedback by star!
+# Version 3.1
+# Should I make a website? send feedback by star!
 # I tried to contact Epieos for their API but no one responded.
 # Number Lookup soon
 
@@ -28,11 +28,13 @@ blank = " "
 github = "https://github.com/LincolnKermit/FVP"
 app = Flask(__name__, static_folder='static')
 keywordfr                        ="fr"
-version                          ="3"
+version                          ="3.1"
 dorks_selected                   =NULL
 indexfonction                    ='"'
 anwser                           ="y"
 str(indexfonction)
+messageapi                       ="Affichage Web disponible via Personne Searcher"
+count = 0
 
 os.system("cls")
 notification.notify(
@@ -54,6 +56,7 @@ print(Fore.LIGHTRED_EX + "Bienvenue sur Finder V-Pro!")
 print(Fore.WHITE + "https://github.com/LincolnKermit/FVP")
 print(Fore.BLUE + "Discord : Lincoln#????")
 print(Fore.MAGENTA + "Version : " + version )
+print(Fore.LIGHTRED_EX + "Message des developpeurs : " + messageapi)
 print(Style.RESET_ALL)
 time.sleep(1)
 print("")
@@ -73,7 +76,7 @@ while anwser =="y":
    choixdorks="4"
    if choixversion==choixname:
       Lastname=input(Fore.MAGENTA + "Nom de famille précis : ")
-      City=input(Fore.MAGENTA + "Ville : ")
+      City=input(Fore.MAGENTA + "Code Postal : ")
       print(Style.RESET_ALL)   
       # Performing google search using Python code
       class Gsearch_python:
@@ -113,6 +116,7 @@ while anwser =="y":
       n = 1
       adresse_home = ""
       for blocinfo in results:
+         bloc_nom1 = soup.find(id="result_1")
          bloc_nom = soup.find(id="result_" + str(n))
          print("Nom : " + bloc_nom["title"])
          results_phone = blocinfo.find_all("span", {"class": "button_wording nomobile"})
@@ -133,7 +137,7 @@ while anwser =="y":
       @app.route('/')
       def index():
          try:
-            return render_template("index.html",github=github,street=adresse_home,lastname=bloc_nom["title"],phone=phone.string,error=False)
+            return render_template("index.html",github=github,street=adresse_home,lastname=bloc_nom1["title"],phone=phone.string,error=False)
          except:
             return render_template("index.html",github=github,error=True)
       webbrowser.open('http://127.0.0.1:5000')
@@ -141,6 +145,7 @@ while anwser =="y":
          print("Statut :" + Fore.GREEN + " OK")
          print(Style.RESET_ALL)
          app.run()
+
 
 
       time.sleep(2)
@@ -205,13 +210,21 @@ while anwser =="y":
       os.system("cls")
       username=input("username : ")
       os.system("cls")
-      response = requests.get('https://github.com/' + username)
+      response = requests.get('https://root-me.org/' + username)
       if response.status_code == 200:
          print("User found on Root-Me")
          print("https://root-me.org/" + username)
          print("")
       elif response.status_code == 404:
          print("User doesn't seems to exist on Root-Me")
+
+      response = requests.get('https://tiktok.com/@' + username)
+      if response.status_code == 200:
+         print("User found on TikTok")
+         print("https://tiktok.com/@" + username)
+         print("")
+      elif response.status_code == 404:
+         print("User doesn't seems to exist on TikTok")
 
 
       response = requests.get('https://github.com/' + username)
@@ -269,15 +282,7 @@ while anwser =="y":
          def __init__(self,name_search):
             self.name = name_search
          def Gsearch(self):
-            count = 0
-            try :
-               from googlesearch import search
-            except ImportError:
-               print("No Module named 'google' Found, Please try again")
-            for i in search(query=self.name,tld='fr',lang='fr',num=10,stop=5,pause=2):
-               count += 1
-               print (count)
-               print(i + '\n')
+            print(i + '\n')
       print("Dorks #1")
       print("")
       print("")
@@ -293,6 +298,13 @@ while anwser =="y":
          gs = Gsearch_python(dorksmodulesaddons)
          gs.Gsearch()      
       input("Appuyez sur entrer pour continuer...")
-
+      try :
+         from googlesearch import search
+      except ImportError:
+         print("No Module named 'google' Found, Please try again")
+      for i in search(query=self.name,tld='fr',lang='fr',num=10,stop=5,pause=2):
+               count += 1
+               print (count)
+   
    else:
       ("Mauvaise saisie")
