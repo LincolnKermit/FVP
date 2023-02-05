@@ -12,7 +12,6 @@ echo ---------------------------[Installations des paquets...]------------------
 pause
 
 color
-python
 pip install requests
 pip install plyer
 pip install time
