@@ -14,6 +14,9 @@
     var goToGithub = function(){
         window.open("https://www.github.com/LincolnKermit/FVP","_blank");
     };
+    var goToErase = function(){
+        open("/eraseit/")
+    };
     </script>
     <video autoplay muted loop id="myVideo">
       <source src={{ url_for('static', filename="op.mp4") }} type="video/mp4">
@@ -24,12 +27,16 @@
         <h1>{{ lastname }}</h1>
         <p>📍 Adresse : {{ street }}</p>
         <p>☎️ Téléphone : {{ phone }}</p>
+        <form class="icon-delete">
         <input type="button" name="" value="S'y rendre" class="submit" onclick="goToAddress();">
         <input type="button" class="submit" name="" value="Appeller" href="tel:{{ phone }}">
+        <input type="button" class="erase" name="" value="Erase it!" onclick="goToErase();">
         <input type="button" name="" value="Notez notre projet ⭐" class="submit" onclick="goToGithub();">
         <p>Coded with ❤️</p>
       </form>
+
     </div>
+    
     {% endif %}
     {% if error == True %}
     <form class="box">
