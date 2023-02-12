@@ -1,5 +1,5 @@
 # Made by Lincoln#???? aka github.com/LincolnKermit
-# Version 3.1
+# Version 3.2
 # Should I make a website? send feedback by star!
 # I tried to contact Epieos for their API but no one responded.
 # Number Lookup soon
@@ -28,12 +28,12 @@ blank = " "
 github = "https://github.com/LincolnKermit/FVP"
 app = Flask(__name__, static_folder='static')
 keywordfr                        ="fr"
-version                          ="3.1"
+version                          ="3.2"
 dorks_selected                   =NULL
 indexfonction                    ='"'
 anwser                           ="y"
 str(indexfonction)
-messageapi                       ="Affichage Web disponible via Personne Searcher"
+messageapi                       ="Ajout du bouton erase sur l'affichage web!"
 count = 0
 
 os.system("cls")
@@ -58,7 +58,6 @@ print(Fore.BLUE + "Discord : Lincoln#????")
 print(Fore.MAGENTA + "Version : " + version )
 print(Fore.LIGHTRED_EX + "Message des developpeurs : " + messageapi)
 print(Style.RESET_ALL)
-time.sleep(1)
 print("")
 input("Press Enter to launch Finder V-Pro...")
 os.system("cls")
@@ -66,19 +65,19 @@ print("Launched!")
 
 
 while anwser =="y":
-   time.sleep(1)
    os.system("cls")
-   print("1. Nom | 2. Username | 3. Email | 4. Dorks")
-   choixversion=input("Choix(1,2,3,4) : ")
+   print("1. Nom | 2. Username | 3. Email")
+   choixversion=input("Choix(1,2,3) : ")
    choixname="1"
    choixusername="2"
    choixemail="3"
-   choixdorks="4"
    if choixversion==choixname:
       Lastname=input(Fore.MAGENTA + "Nom de famille précis : ")
       City=input(Fore.MAGENTA + "Code Postal : ")
       print(Style.RESET_ALL)   
       # Performing google search using Python code
+
+
       class Gsearch_python:
          def __init__(self,name_search):
             self.name = name_search
@@ -93,11 +92,13 @@ while anwser =="y":
                print (count)
                print(i + '\n')
                
+
       print(Fore.BLUE + "V-Pro " + version + " running on ",sys.version)
       print(Style.RESET_ALL)
 
       print(Fore.BLUE + "G" + Fore.RED + "o" + Fore.YELLOW + "o" + Fore.BLUE + "g" + Fore.GREEN + "l" + Fore.RED + "e")
       print(Style.RESET_ALL)
+
       if __name__=='__main__':
          gs = Gsearch_python(indexfonction+Lastname+indexfonction + City)
          gs.Gsearch()
@@ -115,31 +116,69 @@ while anwser =="y":
       results = soup.find_all("div", {"class": "item-info"})
       n = 1
       adresse_home = ""
+      Telephones=[]
+      Adresses=[]
       for blocinfo in results:
          bloc_nom1 = soup.find(id="result_1")
+         bloc_nom2 = soup.find(id="result_2")
          bloc_nom = soup.find(id="result_" + str(n))
          print("Nom : " + bloc_nom["title"])
+
          results_phone = blocinfo.find_all("span", {"class": "button_wording nomobile"})
          for phone in results_phone:
             print("Téléphone : " + phone.string)
+            Telephones.append(phone.string)
+            phone1 = phone.string
          results_adress = blocinfo.find_all("span", {"class": "address-content"})
          for adress in results_adress:
             for addr in adress.find_all("span"):
                adresse_home = addr.string
                print("Adresse : " + addr.string)
+               Adresses.append(addr.string)
                break
+            
+
          print("------------------------------------------")
          n = n + 1
       end = time.time()
+ 
+
+      Nb_tel=len(Telephones)
+      tel1 = Telephones[0]
+      tel2 = Telephones[1]
+      Nb_tel=len(Adresses)
+      adresses1 = Adresses[0]
+      adresses2 = Adresses[1]
+
+
       elapsed = end - start
       print(f'Temps d\'exécution : {elapsed:.2}ms')
       print("Ouverture de l'interface web")
+
       @app.route('/')
+
+
+
       def index():
          try:
-            return render_template("index.html",github=github,street=adresse_home,lastname=bloc_nom1["title"],phone=phone.string,error=False)
+            n = 2
+            return render_template("index.html",github=github,street=adresses1,lastname=bloc_nom1["title"],phone=tel1,error=False)
          except:
             return render_template("index.html",github=github,error=True)
+      
+      
+      @app.route('/eraseit/')
+
+
+      def eraseit():
+         try:
+            return render_template("index.html",github=github,street=adresses2,lastname=bloc_nom2["title"],phone=tel2,error=False)
+         except:
+            return render_template("index.html",github=github,error=True)
+
+
+
+
       webbrowser.open('http://127.0.0.1:5000')
       if __name__ == '__main__':
          print("Statut :" + Fore.GREEN + " OK")
@@ -237,74 +276,5 @@ while anwser =="y":
          print("User doesn't seems to exist on Github")
       print("")
       input("Appuyez sur entrer pour continuer...")
-
-
-
-
-   if choixversion==choixdorks:
-      (Fore.MAGENTA + "Dorks")
-      print(Style.RESET_ALL)
-      time.sleep(0.5)
-      os.system("cls")
-      dorksmodules="”powered by vbulletin” site:.edu"
-      dorksmodulesaddons="site:.edu “Numéro de téléphone”"
-      print("Liste disponible :")
-      print("1. Education | 2. Gouvernemental | 3. Vulnerabilités")
-      choixliste=input("Choix des listes (1/2/3): ")
-      if choixliste=="1":
-         dorks_selected="Education"
-      if choixliste=="2":
-         dorks_selected="Gouvernemental"
-      if choixliste=="3":
-         dorks_selected="Vulnérabilités"
-      if choixliste=="1":
-         dorks_selected="Education"
-      if choixliste=="2":
-         dorks_selected="Gouvernemental"
-      if choixliste=="3":
-         dorks_selected="Vulnérabilités"
-      if choixdorks=="1":
-         print(str(dorks_selected) + " selected")
-      if choixdorks=="2":
-         print(str(dorks_selected) + " selected")
-      if choixdorks=="3":
-         print(str(dorks_selected) + " selected")
-      if choixdorks=="1":
-         print("Grabbing de la liste")
-         time.sleep(0.5)
-         os.system("cls")
-         print("Dorks en cours...")
-      print(Fore.BLUE + "V-Pro " + version + " running on ",sys.version)
-      print(Style.RESET_ALL)
-      print(Fore.BLUE + "G" + Fore.RED + "o" + Fore.YELLOW + "o" + Fore.BLUE + "g" + Fore.GREEN + "l" + Fore.RED + "e")
-      print(Style.RESET_ALL)
-      class Gsearch_python:
-         def __init__(self,name_search):
-            self.name = name_search
-         def Gsearch(self):
-            print(i + '\n')
-      print("Dorks #1")
-      print("")
-      print("")
-      if __name__=='__main__':
-         gs = Gsearch_python(dorksmodules)
-         gs.Gsearch()
-      time.sleep(1)
-      print("")
-      print("")
-      print("Dorks #2")
-      time.sleep(1)
-      if __name__=='__main__':
-         gs = Gsearch_python(dorksmodulesaddons)
-         gs.Gsearch()      
-      input("Appuyez sur entrer pour continuer...")
-      try :
-         from googlesearch import search
-      except ImportError:
-         print("No Module named 'google' Found, Please try again")
-      for i in search(query=self.name,tld='fr',lang='fr',num=10,stop=5,pause=2):
-               count += 1
-               print (count)
-   
    else:
       ("Mauvaise saisie")
