@@ -1,5 +1,6 @@
 # Made by Lincoln#???? aka github.com/LincolnKermit
-# Version 3.3
+#Modified by Manouzr aka https://github.com/Manouzr ;)
+# Version 3.4
 # Should I make a website? send feedback by star!
 # I tried to contact Epieos for their API but no one responded.
 # Number Lookup soon
@@ -15,8 +16,8 @@ from plyer import notification
 from operator import index
 import time, os, sys, lxml, requests, json
 from selenium import webdriver
+import urllib.request
 from urllib.parse import urlencode, urlunparse
-from urllib.request import urlopen, Request
 from bs4 import BeautifulSoup
 from colorama import init
 import webbrowser
@@ -66,11 +67,12 @@ print("Launched!")
 
 while anwser =="y":
    os.system("cls")
-   print("1. Nom | 2. Username | 3. Email")
-   choixversion=input("Choix(1,2,3) : ")
+   print("1. Nom | 2. Username | 3. Email | 4. Numéro de télephone")
+   choixversion=input("Choix(1,2,3,4) : ")
    choixname="1"
    choixusername="2"
    choixemail="3"
+   choixphone = "4"
    if choixversion==choixname:
       Lastname=input(Fore.MAGENTA + "Nom de famille précis : ")
       City=input(Fore.MAGENTA + "Code Postal : ")
@@ -143,10 +145,10 @@ while anwser =="y":
       end = time.time()
  
 
-      Nb_tel=len(Telephones)
-      tel1 = Telephones[0]
-      if Nb_tel > 1:
-         tel2 = Telephones[1]
+      #Nb_tel=len(Telephones)
+      #tel1 = Telephones[0]
+      #if Nb_tel > 1:
+         #tel2 = Telephones[1]
 
       Nb_adresse=len(Adresses)
       adresses1 = Adresses[0]
@@ -166,7 +168,7 @@ while anwser =="y":
       def index():
          try:
             n = 2
-            return render_template("index.html",github=github,street=adresses1,lastname=bloc_nom1["title"],phone=tel1,error=False)
+            return render_template("index.html",github=github,street=adresses1,lastname=bloc_nom1["title"],phone="None",error=False)
          except:
             return render_template("index.html",github=github,error=True)
       
@@ -176,7 +178,7 @@ while anwser =="y":
 
       def eraseit():
          try:
-            return render_template("index.html",github=github,street=adresses2,lastname=bloc_nom2["title"],phone=tel2,error=False)
+            return render_template("index.html",github=github,street=adresses2,lastname=bloc_nom2["title"],phone='None',error=False)
          except:
             return render_template("index.html",github=github,error=True)
 
@@ -219,6 +221,89 @@ while anwser =="y":
       print(Style.RESET_ALL)
       input("Appuyez sur entrer pour continuer...")
       os.system("cls")
+   if choixversion==choixphone:
+    num = input("Entrez le numero de télephone : ")
+    url = 'http://annuaire.freebox.fr/annuaire/?tel=' + num +'&submit_inv=Rechercher'
+    page = urllib.request.urlopen(url, timeout=20)
+    soup = BeautifulSoup(page,features="html.parser")
+    tel = soup.find_all('div', {'class': 'tel'}) #va chercher la classe tel dans le site de l'annuaire free
+    telephone=[]
+    for e in tel:
+        e=e.text #prend le bout du code html avec le num
+        telephone.append(e)
+        e = e.replace('\n', '')
+        res = [str(sub.split('\n')[1]) for sub in telephone]#convertion pip
+        StrNum = "".join(res)#convertie en str
+        print("Numero de telephone :" + str(StrNum).lstrip())#affiche et supprime les espaces de devant dans la liste
+    #PS:la tout est ok pas de verif
+    nom = soup.find_all('span',{'class': 'bold'})
+    NomDeFamille = []
+    for x in nom:
+        x = x.text
+        NomDeFamille.append(x)
+        x = x.replace('[<span class="bold">', '   </span>, <span class="bold">Free, la société</span>, <span class="bold">Free recrute</span>, <span class="bold">Nous contact')#choisi entre les espace la valeur
+        res1 = [str(sub.split('\n')[1]) for sub in NomDeFamille]#convertion pour extraire les str
+        res2 = [str(sub.split('\n')[2]) for sub in NomDeFamille]
+        StrNomdeFamille = "".join(NomDeFamille)#convertis les str trouvé
+        NomDeFamille_final = str(StrNomdeFamille).strip()
+        
+        break
+    adress = soup.find('div',{'class': 'rue'})
+    List_adress = []
+    adress_text = adress.text
+    List_adress.append(adress_text)
+    adress = adress_text.replace('<div class="rue"> ', ' </div>')
+    adress_final = str(adress).strip()
+
+
+    city = soup.find('div',{'class': 'ville'})
+    List_city = []
+    city_text = city.text
+    List_city.append(city_text)
+    city = city_text.replace('<div class="rue"> ', ' </div>')
+    postal_code = re.sub(r'[^\d]+', '', city) 
+    city = re.sub(r'[^\D]+', '', city) 
+    postal_code_final = str(postal_code).strip()
+    city_final = str(city).strip()
+    print(Fore.BLUE + "++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+    print("Recherche dans l'annuaire free.fr")
+    print("++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+    print(Style.RESET_ALL)
+    print("Ouverture de l'interface web")
+
+    @app.route('/')
+
+
+
+    def index():
+       try:
+          n = 2
+          return render_template("index.html",github=github,street=postal_code_final + " " + city_final + ",\n" + adress_final,lastname=NomDeFamille_final,phone=num,error=False)
+       except:
+          return render_template("index.html",github=github,error=True)
+      
+      
+    @app.route('/eraseit/')
+
+
+    def eraseit():
+       try:
+          return render_template("index.html",github=github,street=adresses2,lastname=bloc_nom2["title"],phone='None',error=False)
+       except:
+          return render_template("index.html",github=github,error=True)
+
+
+
+
+    webbrowser.open('http://127.0.0.1:5000')
+    if __name__ == '__main__':
+       print("Statut :" + Fore.GREEN + " OK")
+       print(Style.RESET_ALL)
+       app.run()
+
+
+
+
    if choixversion==choixemail:
       email=input("Email : ")
       os.system("cls")
@@ -266,7 +351,7 @@ while anwser =="y":
          print("User found on TikTok")
          print("https://tiktok.com/@" + username)
          print("")
-      elif response.status_code == 404:
+      else:
          print("User doesn't seems to exist on TikTok")
 
 
