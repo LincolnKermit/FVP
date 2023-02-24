@@ -145,10 +145,14 @@ while anwser =="y":
 
       Nb_tel=len(Telephones)
       tel1 = Telephones[0]
-      tel2 = Telephones[1]
-      Nb_tel=len(Adresses)
+      if Nb_tel > 1:
+         tel2 = Telephones[1]
+
+      Nb_adresse=len(Adresses)
       adresses1 = Adresses[0]
-      adresses2 = Adresses[1]
+      if Nb_adresse > 1:
+         adresses2 = Adresses[1]   
+      
 
 
       elapsed = end - start
