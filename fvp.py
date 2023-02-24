@@ -1,6 +1,5 @@
 # Made by Lincoln#???? aka github.com/LincolnKermit
-# Modified by Manouzr aka https://github.com/Manouzr ;)
-# Version 3.4
+# Version 3.3
 # Should I make a website? send feedback by star!
 # I tried to contact Epieos for their API but no one responded.
 # Number Lookup soon
@@ -29,7 +28,7 @@ blank = " "
 github = "https://github.com/LincolnKermit/FVP"
 app = Flask(__name__, static_folder='static')
 keywordfr                        ="fr"
-version                          ="3.3"
+version                          ="3.4.1"
 dorks_selected                   =NULL
 indexfonction                    ='"'
 anwser                           ="y"
@@ -53,7 +52,7 @@ print("""
 ╚═╝       ╚═══╝  ╚═╝     
                                                                                                       
 """"")
-print(Fore.LIGHTRED_EX + "Bienvenue sur Finder V-Pro!")
+print(Fore.LIGHTRED_EX + "Bienvenue sur Finder V-Pro Enhanced!")
 print(Fore.WHITE + "https://github.com/LincolnKermit/FVP")
 print(Fore.BLUE + "Discord : Lincoln#????")
 print(Fore.MAGENTA + "Version : " + version )
@@ -67,12 +66,35 @@ print("Launched!")
 
 while anwser =="y":
    os.system("cls")
-   print("1. Nom | 2. Username | 3. Email | 4. Numéro de télephone")
-   choixversion=input("Choix(1,2,3,4) : ")
+   print("1. Nom | 2. Username | 3. Email | 4. Numéro de télephone | 5. Discord | 6. Quitter")
+   choixversion=input("Choix(1-6) : ")
    choixname="1"
    choixusername="2"
    choixemail="3"
    choixphone = "4"
+   choixdiscord = "5"
+   choixquitter = "6"  
+   if choixversion==choixquitter:
+      print("Merci d'avoir utilisé Finder V-Pro!")
+      time.sleep(2)
+      sys.exit()
+   if choixversion==choixdiscord:
+      id = input(Fore.MAGENTA + "ID Discord : ")
+      req = requests.get('https://api.leaked.wiki/discorduser?id=' + id)
+      data = req.json()
+      print(Style.RESET_ALL)
+
+      print(Fore.RED + "Nom d'utilisateur : " + data['username'] + "#" + data['discriminator'])
+      time.sleep(0.5)
+      print("Url du Profil : " + data['avatar'])
+      time.sleep(0.5)
+      print("Url Bannière : " + str(data['banner']))
+      time.sleep(1)
+      print("Les infos apparaitrons dans la console pendant 30 secondes.")
+      time.sleep(30)
+      print(Style.RESET_ALL)
+      
+
    if choixversion==choixname:
       Lastname=input(Fore.MAGENTA + "Nom de famille précis : ")
       City=input(Fore.MAGENTA + "Code Postal : ")
@@ -308,6 +330,7 @@ while anwser =="y":
       email=input("Email : ")
       os.system("cls")
       print("Email : " + email )
+
       class Gsearch_python:
          def __init__(self,name_search):
             self.name = name_search
