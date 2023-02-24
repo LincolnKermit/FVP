@@ -167,10 +167,10 @@ while anwser =="y":
       end = time.time()
  
 
-      #Nb_tel=len(Telephones)
-      #tel1 = Telephones[0]
-      #if Nb_tel > 1:
-         #tel2 = Telephones[1]
+      Nb_tel=len(Telephones)
+      tel1 = Telephones[0]
+      if Nb_tel > 1:
+         tel2 = Telephones[1]
 
       Nb_adresse=len(Adresses)
       adresses1 = Adresses[0]
