@@ -8,7 +8,8 @@ Dox with the powers of searchs engines!
 
 
 <h2> API Added : Root-Me, Github, 118712.fr <h2>
-<h2> Annuaire : ✅ API Available : 118712.fr </h2>
+<h2> Discord ID : ✅ (NEW)</h2>
+<h2> Annuaire : ✅ API Available : 118712.fr | Free.fr (NEW) </h2>
 <h2> Dorks : ✅ (BETA)</h2>
 <h2> Email : ✅ (I need to add EPIEOS API)</h2>
 <h2> Google : ✅ </h2>
