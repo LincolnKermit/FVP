@@ -1,5 +1,5 @@
 # Made by Lincoln#???? aka github.com/LincolnKermit
-# Version 3.3
+# Version 3.4.1
 # Should I make a website? send feedback by star!
 # I tried to contact Epieos for their API but no one responded.
 # Number Lookup soon
@@ -66,7 +66,7 @@ print("Launched!")
 
 while anwser =="y":
    os.system("cls")
-   print("1. Nom | 2. Username | 3. Email | 4. Numéro de télephone | 5. Discord | 6. Quitter")
+   print("1. Nom | 2. Username | 3. Email | 4. Numéro de télephone | 5. Discord | . Quitter")
    choixversion=input("Choix(1-6) : ")
    choixname="1"
    choixusername="2"
@@ -190,7 +190,7 @@ while anwser =="y":
       def index():
          try:
             n = 2
-            return render_template("index.html",github=github,street=adresses1,lastname=bloc_nom1["title"],phone="None",error=False)
+            return render_template("index.html",github=github,street=adresses1,lastname=bloc_nom1["title"],phone=tel1,error=False)
          except:
             return render_template("index.html",github=github,error=True)
       
@@ -200,7 +200,7 @@ while anwser =="y":
 
       def eraseit():
          try:
-            return render_template("index.html",github=github,street=adresses2,lastname=bloc_nom2["title"],phone='None',error=False)
+            return render_template("index.html",github=github,street=adresses2,lastname=bloc_nom2["title"],phone=tel2,error=False)
          except:
             return render_template("index.html",github=github,error=True)
 
