@@ -1,5 +1,5 @@
 # Made by Lincoln#???? aka github.com/LincolnKermit
-# Version 3.2
+# Version 3.3
 # Should I make a website? send feedback by star!
 # I tried to contact Epieos for their API but no one responded.
 # Number Lookup soon
@@ -28,7 +28,7 @@ blank = " "
 github = "https://github.com/LincolnKermit/FVP"
 app = Flask(__name__, static_folder='static')
 keywordfr                        ="fr"
-version                          ="3.2"
+version                          ="3.3"
 dorks_selected                   =NULL
 indexfonction                    ='"'
 anwser                           ="y"
