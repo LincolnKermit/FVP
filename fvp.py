@@ -1,5 +1,5 @@
 # Made by Lincoln#???? aka github.com/LincolnKermit
-#Modified by Manouzr aka https://github.com/Manouzr ;)
+# Modified by Manouzr aka https://github.com/Manouzr ;)
 # Version 3.4
 # Should I make a website? send feedback by star!
 # I tried to contact Epieos for their API but no one responded.
