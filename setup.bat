@@ -33,3 +33,4 @@ pip install -r requirements.txt
 color
 echo Termine!
 pause
+python fvp.py
