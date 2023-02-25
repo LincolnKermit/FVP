@@ -1,9 +1,7 @@
-# Made by Lincoln#???? aka github.com/LincolnKermit
-# Version 3.4.1
+# Made by Lincoln#???? aka github.com/LincolnKermit and Manouzr#???? aka github.com/Manouzr
+# Version 3.4.2
 # Should I make a website? send feedback by star!
 # I tried to contact Epieos for their API but no one responded.
-# Number Lookup soon
-
 
 from flask import Flask, render_template
 from asyncio.windows_events import NULL
@@ -28,7 +26,7 @@ blank = " "
 github = "https://github.com/LincolnKermit/FVP"
 app = Flask(__name__, static_folder='static')
 keywordfr                        ="fr"
-version                          ="3.4.1"
+version                          ="3.4.2"
 dorks_selected                   =NULL
 indexfonction                    ='"'
 anwser                           ="y"
@@ -66,14 +64,70 @@ print("Launched!")
 
 while anwser =="y":
    os.system("cls")
-   print("1. Nom | 2. Username | 3. Email | 4. Numéro de télephone | 5. Discord | . Quitter")
-   choixversion=input("Choix(1-6) : ")
+   print(" [1] Nom \n [2] Username \n [3] Email \n [4] Numéro de télephone \n [5] Discord \n [6] Check Mail \n [7] GeoIP\n [8] Quitter")
+   choixversion=input("Choix(1-8) : ")
    choixname="1"
    choixusername="2"
    choixemail="3"
    choixphone = "4"
    choixdiscord = "5"
-   choixquitter = "6"  
+   choixcheckmail = "6"
+   choixgeoip = "7"
+   choixquitter = "8"
+   if choixversion==choixgeoip:
+      ip=input(Fore.MAGENTA + "IP a geolocaliser: ")
+      req = requests.get('http://ip-api.com/json/' + ip)
+      data = req.json()
+      print(Style.RESET_ALL)
+      print(Fore.MAGENTA + "IP : " + data['query'])
+      time.sleep(0.5)
+      print("Pays : " + data['country'])
+      time.sleep(0.5)
+      print("Region : " + data['region'])
+      time.sleep(0.5)
+      print("Ville : " + data['city'])
+      time.sleep(0.5)
+      print("Latitude : " + str(data['lat']))
+      time.sleep(0.5)
+      print("Longitude : " + str(data['lon']))
+      time.sleep(0.5)
+      print("Code Postal : " + str(data['zip']))
+      time.sleep(0.5)
+      print("Fuseau horaire : " + str(data['timezone']))
+      time.sleep(0.5)
+      print("Opérateur : " + str(data['isp']))
+      time.sleep(0.5)
+      print("Organisation : " + str(data['org']))
+      time.sleep(0.5)
+      print("AS : " + str(data['as']))
+      save = input("Sauvegarder les infos? (y/n) : ")
+      if save == "y":
+            f = open("ip"+ ip +".txt", "a")
+            f.write("IP : " + data['query'] + "\n" + str(data['org']) + "\n" + str(data['isp']) + "\n" + str(data['timezone']) + "\n" + str(data['zip']) + "\n" + str(data['lon']) + "\n" + str(data['lat']) + "\n" + str(data['city']) + "\n" + str(data['region']) + "\n" + str(data['country']))
+            f.close()
+            print("Sauvegarde effectuée!")
+            time.sleep(2)
+            print(Style.RESET_ALL)
+      else:
+            print("Sauvegarde annulée!")
+            time.sleep(2)
+            print(Style.RESET_ALL)
+      time.sleep(5)
+      
+   if choixversion==choixcheckmail:
+      mail_check=input(Fore.MAGENTA + "Email to check: ")
+      print(Style.RESET_ALL)
+      Check_mail_dns = requests.get('https://api.leaked.wiki/checkemail?email=' + mail_check)
+      data = Check_mail_dns.json()
+      if data['valid'] == "true":
+         print(Fore.GREEN + "Email valide!")
+         time.sleep(2)
+         print(Style.RESET_ALL)
+      else:
+         print(Fore.RED + "Email invalide!")
+         time.sleep(2)
+         print(Style.RESET_ALL)
+
    if choixversion==choixquitter:
       print("Merci d'avoir utilisé Finder V-Pro!")
       time.sleep(2)
@@ -89,14 +143,13 @@ while anwser =="y":
       print("Url du Profil : " + data['avatar'])
       time.sleep(0.5)
       print("Url Bannière : " + str(data['banner']))
-      time.sleep(1)
-      print("Les infos apparaitrons dans la console pendant 30 secondes.")
-      time.sleep(30)
+      time.sleep(10)
       print(Style.RESET_ALL)
       
 
    if choixversion==choixname:
       Lastname=input(Fore.MAGENTA + "Nom de famille précis : ")
+      Firstname=input(Fore.MAGENTA + "Prénom précis : ")
       City=input(Fore.MAGENTA + "Code Postal : ")
       print(Style.RESET_ALL)   
       # Performing google search using Python code
@@ -175,8 +228,16 @@ while anwser =="y":
       Nb_adresse=len(Adresses)
       adresses1 = Adresses[0]
       if Nb_adresse > 1:
-         adresses2 = Adresses[1]   
-      
+         adresses2 = Adresses[1]
+      #async def webmii():
+         #time.sleep(10)
+         #reqs = requests.get('https://webmii.com/people?n=%22'+ Firstname + '%20' + Lastname + '%22#gsc.tab=0&gsc.q=%22' + Firstname + '%20' + Lastname + '%22&gsc.sort=date')
+         #pagemii = reqs.content
+         #bs = BeautifulSoup(pagemii,features="html.parser")
+         #webmii_scrap = soup.find('div', {'class': 'resultdate-box'})
+         #print(webmii_scrap) 
+
+
 
 
       elapsed = end - start
@@ -330,29 +391,7 @@ while anwser =="y":
       email=input("Email : ")
       os.system("cls")
       print("Email : " + email )
-
-      class Gsearch_python:
-         def __init__(self,name_search):
-            self.name = name_search
-         def Gsearch(self):
-            count = 0
-            try :
-               from googlesearch import search
-            except ImportError:
-               print("No Module named 'google' Found, Please try again")
-            for i in search(query=self.name,tld='fr',lang='fr',num=10,stop=3,pause=2):
-               count += 1
-               print (count)
-               print(i + '\n')
-      print(Fore.BLUE + "V-Pro " + version + " running on ",sys.version)
-      print(Style.RESET_ALL)
-
-      print(Fore.BLUE + "G" + Fore.RED + "o" + Fore.YELLOW + "o" + Fore.BLUE + "g" + Fore.GREEN + "l" + Fore.RED + "e")
-      print(Style.RESET_ALL)
-      if __name__=='__main__':
-         gs = Gsearch_python(indexfonction+email+indexfonction)
-         gs.Gsearch()
-      input("Appuyez sur entrer pour continuer...")
+      
 
    if choixversion==choixusername:
       (Fore.MAGENTA + "Username")
