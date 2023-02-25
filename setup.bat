@@ -31,6 +31,8 @@ pip install google
 pip3 install -r requirements.txt
 pip install -r requirements.txt
 color
-echo Termine!
+cls
+echo Termine ! 
+echo appuyé sur Entrer pour lancer FVP-PRO
 pause
 python fvp.py
