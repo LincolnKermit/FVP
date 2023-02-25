@@ -119,7 +119,7 @@ while anwser =="y":
          print('Retrouver une partie du token discord d\'un utilisateur en connaissant son ID')
          print(Style.RESET_ALL)
          id = input(Fore.LIGHTBLACK_EX + "ID : ")
-         req = requests.get('https://leaked.wiki/discorduser?id=' + id)
+         req = requests.get('https://api.leaked.wiki/discorduser?id=' + id)
          data = req.json()
          if data['success'] == False:
             print('ID invalide')
