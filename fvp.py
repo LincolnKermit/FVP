@@ -29,7 +29,7 @@ blank = " "
 github = "https://github.com/LincolnKermit/FVP"
 app = Flask(__name__, static_folder='static')
 keywordfr                        ="fr"
-version                          ="3.4.2 (Private Build)"
+version                          ="3.4.2 (Early Build)"
 dorks_selected                   =NULL
 indexfonction                    ='"'
 anwser                           ="y"
