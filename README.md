@@ -11,7 +11,7 @@ Dox with the powers of searchs engines!
 <h2> Discord ID : ✅ (NEW)</h2>
 <h2> Annuaire : ✅ API Available : 118712.fr | Free.fr (NEW) </h2>
 <h2> Email : ✅ (I need to add EPIEOS API)</h2>
-<h2> Email Checker (BETA) : ✅ (BETA)</h2>
+<h2> Email Checker : ✅ (BETA)</h2>
 <h2> IP Geo : ✅ </h2>
 <h2> Google : ✅ </h2>
 <h2> Yahoo : ❌ </h2>
