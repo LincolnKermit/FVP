@@ -9,11 +9,16 @@ Dox with the powers of searchs engines!
 
 <h2> API Added : Root-Me, Github, 118712.fr, Free.fr <h2>
 <h2> Discord ID : ✅ (NEW)</h2>
-<h2> Annuaire : ✅ API Available : 118712.fr | Free.fr (NEW) </h2>
+<h2> GeoIp : ✅ </h2>
+<h2> IpToDomain ✅</h2>
+<h2> DomainToIp ✅</h2>
+<h2> Partial Discord Token Finder ✅</h2>
+<h2> Annuaire : ✅ API Available : 118712.fr | Free.fr (NEW) | SFR (Coming soon) </h2>
 <h2> Email : ✅ (I need to add EPIEOS API)</h2>
 <h2> Email Checker : ✅ (BETA)</h2>
 <h2> IP Geo : ✅ </h2>
 <h2> Google : ✅ </h2>
+<h2> Yandex : ❌ ( WIP ) </h2>
 <h2> Yahoo : ❌ </h2>
 <h2> Bing : ❌ </h2>
 <h2> DuckDuckGo : ❌ </h2>
