@@ -34,7 +34,7 @@ dorks_selected                   =NULL
 indexfonction                    ='"'
 anwser                           ="y"
 str(indexfonction)
-messageapi                       ="Ajout du bouton erase sur l'affichage web!"
+messageapi                       ="Ajout de l'api Free.fr , GeoIP , Miscs tools"
 count = 0
 
 os.system("cls")
