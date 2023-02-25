@@ -4,11 +4,14 @@
 # I tried to contact Epieos for their API but no one responded.
 
 from flask import Flask, render_template
+from flask import request
 from asyncio.windows_events import NULL
 import cmd
 import re
+import pyperclip
 import csv
 import requests
+import socket
 from plyer import notification
 from operator import index
 import time, os, sys, lxml, requests, json
@@ -26,7 +29,7 @@ blank = " "
 github = "https://github.com/LincolnKermit/FVP"
 app = Flask(__name__, static_folder='static')
 keywordfr                        ="fr"
-version                          ="3.4.2"
+version                          ="3.4.2 (Private Build)"
 dorks_selected                   =NULL
 indexfonction                    ='"'
 anwser                           ="y"
@@ -64,8 +67,8 @@ print("Launched!")
 
 while anwser =="y":
    os.system("cls")
-   print(" [1] Nom \n [2] Username \n [3] Email \n [4] Numéro de télephone \n [5] Discord \n [6] Check Mail \n [7] GeoIP\n [8] Quitter")
-   choixversion=input("Choix(1-8) : ")
+   print(" [1] Nom \n [2] Username \n [3] Email \n [4] Numéro de télephone \n [5] Discord \n [6] Check Mail \n [7] GeoIP\n [8] Yandex Images Searcher \n [9] Tools\n [10] Quitter")
+   choixversion=input("Choix(1-10) : ")
    choixname="1"
    choixusername="2"
    choixemail="3"
@@ -73,7 +76,75 @@ while anwser =="y":
    choixdiscord = "5"
    choixcheckmail = "6"
    choixgeoip = "7"
-   choixquitter = "8"
+   choiximages = "8"
+   choixtools = "9"
+   choixquitter = "10"
+   if choixversion==choixtools:
+      os.system("cls")
+      print(" [1] Domain 2 IP \n [2] IP 2 Domain \n [3] Partial Discord Token Finder \n [0] Back")
+      choixtools=input("Choix(1-4) : ")
+      if choixtools=="1":
+         os.system("cls")
+         print(Fore.LIGHTBLUE_EX + "++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+         print("Domain 2 IP")
+         print("++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+         domain=input(Fore.LIGHTBLACK_EX + "Domain : ")
+
+         print(f"IP de {domain} : " + socket.gethostbyname(domain))
+         time.sleep(0.5)       
+         pyperclip.copy(socket.gethostbyname(domain) + " : " + domain)
+         print("Ip copiée dans le presse-papier!")	
+         print(Style.RESET_ALL)
+         input("Press Enter to continue...")
+         
+      if choixtools=="2":
+         os.system("cls")
+         print(Fore.LIGHTBLUE_EX + "++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+         print("IP 2 Domain")
+         print("++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+         ip=input(Fore.LIGHTBLACK_EX + "IP : ")
+         print("Domain de " + ip + " : " + socket.gethostbyaddr(ip)[0])
+         time.sleep(0.5)
+         pyperclip.copy(socket.gethostbyaddr(ip)[0] + " : " + ip)
+         print("Domain copié dans le presse-papier!")
+         print(Style.RESET_ALL)
+         
+         input("Press Enter to continue...")
+      if choixtools=="3":
+         os.system('cls')
+         print(Fore.LIGHTBLUE_EX + "++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+         print("Partial Discord Token Finder")
+         print("++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+         time.sleep(3)
+         print('Retrouver une partie du token discord d\'un utilisateur en connaissant son ID')
+         print(Style.RESET_ALL)
+         id = input(Fore.LIGHTBLACK_EX + "ID : ")
+         req = requests.get('https://leaked.wiki/discorduser?id=' + id)
+         data = req.json()
+         if data['success'] == False:
+            print('ID invalide')
+            input("Press Enter to continue...")
+            os.system('cls')
+         else:
+            print("Cible : " + data['username'] + "#" + data['discriminator'])
+            time.sleep(0.5)
+            print("Recherche du token...")
+            time.sleep(0.5)
+            print("Token Trouvé ! : " + str(data['partial_token']))
+            time.sleep(0.5)
+            pyperclip.copy(str(data['partial_token']))
+            print("Token copié dans le presse-papier!")
+            print(Style.RESET_ALL)
+            input("Press Enter to continue...")
+
+         
+      if choixtools=="0":
+         os.system("cls")
+         print("Retour...")
+         time.sleep(0.5)
+         os.system("cls")
+      
+      
    if choixversion==choixgeoip:
       ip=input(Fore.MAGENTA + "IP a geolocaliser: ")
       req = requests.get('http://ip-api.com/json/' + ip)
@@ -132,19 +203,72 @@ while anwser =="y":
       print("Merci d'avoir utilisé Finder V-Pro!")
       time.sleep(2)
       sys.exit()
+   if choixversion==choiximages:
+      imageslink = input("Coller le lien de l'image : ")
+      url = ('https://yandex.ru/images/search?rpt=imageview&url=' + imageslink)
+      response = requests.get(url)
+      print(response)
+      html = response.content
+      soup = BeautifulSoup(html, "html.parser")
+      mydivs = soup.find_all("div", {"class": "CbirSites-ItemTitle"})
+      for divs in mydivs:
+         divs = soup.find_all("div", {"class": "Link Link_view_default"})
+         print(divs)
+         for listqs in divs:
+            listqs = soup.find_all("div", class_="Link Link_view_default")
+            print(listqs)
+      time.sleep(40)
+      
+      
    if choixversion==choixdiscord:
       id = input(Fore.MAGENTA + "ID Discord : ")
       req = requests.get('https://api.leaked.wiki/discorduser?id=' + id)
       data = req.json()
       print(Style.RESET_ALL)
-
-      print(Fore.RED + "Nom d'utilisateur : " + data['username'] + "#" + data['discriminator'])
+      discord_user ="Nom d'utilisateur : " + data['username'] + "#" + data['discriminator']
+      print(Fore.RED + discord_user)
       time.sleep(0.5)
+      discord_profile =  data['avatar']
+      
       print("Url du Profil : " + data['avatar'])
       time.sleep(0.5)
       print("Url Bannière : " + str(data['banner']))
-      time.sleep(10)
       print(Style.RESET_ALL)
+      if data['banner'] == None:
+         print(Fore.RED + "Pas de bannière")
+         none = "Pas de bannière ❌"
+
+
+
+      
+      print("Ouverture de l'interface web")
+      @app.route('/')
+      def index():
+         try:
+            n = 2
+            return render_template("discord.html",github=github,discord_user=discord_user,profile_img=data['avatar'],banner=str(data['banner']),error=False)
+         except:
+            return render_template("discord.html",github=github,error=True)
+      
+      
+      @app.route('/eraseit/')
+
+
+      def eraseit():
+         try:
+            return render_template("index.html",github=github,discord_user=discord_user,profile_img=data['avatar'],banner=str(data['banner']),error=False)
+         except:
+            return render_template("index.html",github=github,error=True)
+         
+
+
+      webbrowser.open('http://127.0.0.1:5000')
+      if __name__ == '__main__':
+         print("Statut :" + Fore.GREEN + " OK")
+         print(Style.RESET_ALL)
+         app.run()
+
+
       
 
    if choixversion==choixname:
@@ -224,11 +348,17 @@ while anwser =="y":
       tel1 = Telephones[0]
       if Nb_tel > 1:
          tel2 = Telephones[1]
+         if Nb_tel > 2:
+            tel3 = Telephones[2]
+            if Nb_tel > 3:
+               tel4 = Telephones[3]
 
       Nb_adresse=len(Adresses)
       adresses1 = Adresses[0]
       if Nb_adresse > 1:
          adresses2 = Adresses[1]
+         if Nb_adresse > 2:
+            adresses3 = Adresses[2]
       #async def webmii():
          #time.sleep(10)
          #reqs = requests.get('https://webmii.com/people?n=%22'+ Firstname + '%20' + Lastname + '%22#gsc.tab=0&gsc.q=%22' + Firstname + '%20' + Lastname + '%22&gsc.sort=date')
@@ -239,19 +369,16 @@ while anwser =="y":
 
 
 
-
       elapsed = end - start
       print(f'Temps d\'exécution : {elapsed:.2}ms')
       print("Ouverture de l'interface web")
 
       @app.route('/')
 
-
-
       def index():
          try:
             n = 2
-            return render_template("index.html",github=github,street=adresses1,lastname=bloc_nom1["title"],phone=tel1,error=False)
+            return render_template("index.html",github=github,street1=adresses1,street2=adresses2,lastname1=bloc_nom1["title"],lastname2=bloc_nom2["title"],phone1=tel1,phone2=tel2,error=False)
          except:
             return render_template("index.html",github=github,error=True)
       
@@ -279,18 +406,6 @@ while anwser =="y":
       time.sleep(2)
       print(Fore.CYAN + "Bing")
       print("Non disponible")
-      #Code I found on Wiki but im not able to add it due to compatibility and others problems.
-      #Using Bing
-      #querybing=Lastname + City
-      #url = urlunparse(("https", "www.duckduckgo.com", "/", "", urlencode({"q": query}), ""))
-      #custom_user_agent = "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0"
-      #req = Request(url, headers={"User-Agent": custom_user_agent})
-      #page = urlopen(req)
-      # Further code I've left unmodified
-      #soup = BeautifulSoup(page.read())
-      #links = soup.findAll("a")
-      #for link in links:
-      #    print(link["href"])
       print(Style.RESET_ALL)
 
       time.sleep(2)
@@ -329,7 +444,6 @@ while anwser =="y":
         res2 = [str(sub.split('\n')[2]) for sub in NomDeFamille]
         StrNomdeFamille = "".join(NomDeFamille)#convertis les str trouvé
         NomDeFamille_final = str(StrNomdeFamille).strip()
-        
         break
     adress = soup.find('div',{'class': 'rue'})
     List_adress = []
@@ -407,14 +521,6 @@ while anwser =="y":
          print("")
       elif response.status_code == 404:
          print("User doesn't seems to exist on Root-Me")
-
-      response = requests.get('https://tiktok.com/@' + username)
-      if response.status_code == 200:
-         print("User found on TikTok")
-         print("https://tiktok.com/@" + username)
-         print("")
-      else:
-         print("User doesn't seems to exist on TikTok")
 
 
       response = requests.get('https://github.com/' + username)
