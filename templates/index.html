@@ -17,6 +17,9 @@
     var goToErase = function(){
         open("/eraseit/")
     };
+    var goToCall = function(){
+        window.open("tel:{{phone}}","_blank");  
+    };
     </script>
     <video autoplay muted loop id="myVideo">
       <source src={{ url_for('static', filename="op.mp4") }} type="video/mp4">
@@ -29,7 +32,7 @@
         <p>☎️ Téléphone : {{ phone }}</p>
         <form class="icon-delete">
         <input type="button" name="" value="S'y rendre" class="submit" onclick="goToAddress();">
-        <input type="button" class="submit" name="" value="Appeller" href="tel:{{ phone }}">
+        <input type="button" class="submit" name="" value="Appeller" onclick="goToCall();">
         <input type="button" class="erase" name="" value="Erase it!" onclick="goToErase();">
         <input type="button" name="" value="Notez notre projet ⭐" class="submit" onclick="goToGithub();">
         <p>Coded with ❤️</p>
