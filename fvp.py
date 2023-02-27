@@ -1,5 +1,5 @@
 # Made by Lincoln#???? aka github.com/LincolnKermit and Manouzr#???? aka github.com/Manouzr
-# Version 3.4.2
+# Version 3.4.3
 # Should I make a website? send feedback by star!
 # I tried to contact Epieos for their API but no one responded.
 
@@ -29,12 +29,12 @@ blank = " "
 github = "https://github.com/LincolnKermit/FVP"
 app = Flask(__name__, static_folder='static')
 keywordfr                        ="fr"
-version                          ="3.4.2 (Early Build)"
+version                          ="3.4.2 (Private Build)"
 dorks_selected                   =NULL
 indexfonction                    ='"'
 anwser                           ="y"
 str(indexfonction)
-messageapi                       ="Ajout de l'api Free.fr , GeoIP , Miscs tools"
+messageapi                       ="Yandex Image Searcher available!"
 count = 0
 
 os.system("cls")
@@ -67,7 +67,7 @@ print("Launched!")
 
 while anwser =="y":
    os.system("cls")
-   print(" [1] Nom \n [2] Username \n [3] Email \n [4] Numéro de télephone \n [5] Discord \n [6] Check Mail \n [7] GeoIP\n [8] Yandex Images Searcher \n [9] Tools\n [10] Quitter")
+   print(" [1] Nom \n [2] Username \n [3] Email \n [4] Numéro de télephone \n [5] Discord \n [6] Check Mail \n [7] GeoIP\n [8] Yandex Images Searcher \n [9] Tools\n [10] AIO \n[0] Quitter")
    choixversion=input("Choix(1-10) : ")
    choixname="1"
    choixusername="2"
@@ -78,7 +78,77 @@ while anwser =="y":
    choixgeoip = "7"
    choiximages = "8"
    choixtools = "9"
-   choixquitter = "10"
+   choixallinone = "10"
+   choixquitter = "0"
+   if choixversion==choixallinone:
+      os.system("cls")
+      print(Fore.LIGHTCYAN_EX + "++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+      print("All In One Search")
+      print("++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+      nom = input(Fore.LIGHTBLACK_EX + "Nom : ")
+      prenom = input("Prénom : ")
+      username = input("Username : ")
+      email = input("Email : ")
+      phone = input("Numéro de télephone : ")
+      discord = input("Discord ID : ")
+      if nom == "":
+         print("Nom : " + Fore.RED + "Recherche du nom ignoré!" + Style.RESET_ALL)
+      if prenom == "":
+         print("Prénom : " + Fore.RED + "Recherche du prénom ignoré!" + Style.RESET_ALL)
+      if username == "":
+         print("Username : " + Fore.RED + "Recherche du username ignoré!" + Style.RESET_ALL)
+      if email == "":
+         print("Email : " + Fore.RED + "Recherche de l'email ignoré!" + Style.RESET_ALL)
+      if phone == "":
+         print("Numéro de télephone : " + Fore.RED + "Recherche du numéro de télephone ignoré!" + Style.RESET_ALL)
+      if discord == "":
+         print("Discord ID : " + Fore.RED + "Recherche du discord ID ignoré!" + Style.RESET_ALL)
+      print(Fore.LIGHTCYAN_EX + "++++++++++++++++++++++++++Recherche en cours...++++++++++++++++++++++++++++")
+      req = requests.get('https://api.leaked.wiki/discorduser?id=' + id)
+      data = req.json()
+      print(Style.RESET_ALL)
+      discord_user ="Nom d'utilisateur : " + data['username'] + "#" + data['discriminator']
+      print(Fore.RED + discord_user)
+      time.sleep(0.5)
+      discord_profile =  data['avatar']
+      
+      print("Url du Profil : " + data['avatar'])
+      time.sleep(0.5)
+      print("Url Bannière : " + str(data['banner']))
+      print(Style.RESET_ALL)
+      if data['banner'] == None:
+         print(Fore.RED + "Pas de bannière")
+         banner = "Pas de bannière ❌"
+      print(Style.RESET_ALL)
+      print("Ouverture de l'interface web")
+      time.sleep(0.5)
+      @app.route('/discord/')
+      def index():
+         try:
+            n = 2
+            return render_template("discord.html",github=github,discord_user=discord_user,profile_img=data['avatar'],banner=banner,error=False)
+         except:
+            return render_template("discord.html",github=github,error=True)
+      
+      
+      @app.route('/eraseit/')
+
+
+      def eraseit():
+         try:
+            return render_template("index.html",github=github,discord_user=discord_user,profile_img=data['avatar'],banner=str(data['banner']),error=False)
+         except:
+            return render_template("index.html",github=github,error=True)
+         
+
+
+      webbrowser.open('http://127.0.0.1:5000')
+      if __name__ == '__main__':
+         print("Statut :" + Fore.GREEN + " OK")
+         print(Style.RESET_ALL)
+         app.run()
+
+      
    if choixversion==choixtools:
       os.system("cls")
       print(" [1] Domain 2 IP \n [2] IP 2 Domain \n [3] Partial Discord Token Finder \n [0] Back")
@@ -119,7 +189,7 @@ while anwser =="y":
          print('Retrouver une partie du token discord d\'un utilisateur en connaissant son ID')
          print(Style.RESET_ALL)
          id = input(Fore.LIGHTBLACK_EX + "ID : ")
-         req = requests.get('https://api.leaked.wiki/discorduser?id=' + id)
+         req = requests.get('https://leaked.wiki/discorduser?id=' + id)
          data = req.json()
          if data['success'] == False:
             print('ID invalide')
@@ -204,20 +274,20 @@ while anwser =="y":
       time.sleep(2)
       sys.exit()
    if choixversion==choiximages:
+      echo=[]
+      textstring=[]
       imageslink = input("Coller le lien de l'image : ")
       url = ('https://yandex.ru/images/search?rpt=imageview&url=' + imageslink)
       response = requests.get(url)
       print(response)
       html = response.content
       soup = BeautifulSoup(html, "html.parser")
-      mydivs = soup.find_all("div", {"class": "CbirSites-ItemTitle"})
-      for divs in mydivs:
-         divs = soup.find_all("div", {"class": "Link Link_view_default"})
-         print(divs)
-         for listqs in divs:
-            listqs = soup.find_all("div", class_="Link Link_view_default")
-            print(listqs)
-      time.sleep(40)
+      for data in soup.find_all("div", {"class": "CbirSites-ItemTitle"}):
+         for a in data.find_all('a'):
+            print(a.get('href'))
+            print(a.text)
+            print('----------------------------------------------------')
+      time.sleep(40) 
       
       
    if choixversion==choixdiscord:
@@ -377,8 +447,11 @@ while anwser =="y":
 
       def index():
          try:
+            os.system("ipconfig /flushdns")
+            time.sleep(2)
+            os.system("cls")
             n = 2
-            return render_template("index.html",github=github,street1=adresses1,street2=adresses2,lastname1=bloc_nom1["title"],lastname2=bloc_nom2["title"],phone1=tel1,phone2=tel2,error=False)
+            return render_template("index.html",github=github,street1=adresses1,lastname1=bloc_nom1["title"],phone1=tel1,error=False)
          except:
             return render_template("index.html",github=github,error=True)
       
@@ -401,8 +474,6 @@ while anwser =="y":
          print(Style.RESET_ALL)
          app.run()
 
-
-
       time.sleep(2)
       print(Fore.CYAN + "Bing")
       print("Non disponible")
@@ -424,16 +495,15 @@ while anwser =="y":
     url = 'http://annuaire.freebox.fr/annuaire/?tel=' + num +'&submit_inv=Rechercher'
     page = urllib.request.urlopen(url, timeout=20)
     soup = BeautifulSoup(page,features="html.parser")
-    tel = soup.find_all('div', {'class': 'tel'}) #va chercher la classe tel dans le site de l'annuaire free
+    tel = soup.find_all('div', {'class': 'tel'})
     telephone=[]
     for e in tel:
-        e=e.text #prend le bout du code html avec le num
+        e=e.text
         telephone.append(e)
         e = e.replace('\n', '')
-        res = [str(sub.split('\n')[1]) for sub in telephone]#convertion pip
-        StrNum = "".join(res)#convertie en str
-        print("Numero de telephone :" + str(StrNum).lstrip())#affiche et supprime les espaces de devant dans la liste
-    #PS:la tout est ok pas de verif
+        res = [str(sub.split('\n')[1]) for sub in telephone]
+        StrNum = "".join(res)
+        print("Numero de telephone :" + str(StrNum).lstrip())
     nom = soup.find_all('span',{'class': 'bold'})
     NomDeFamille = []
     for x in nom:
@@ -467,6 +537,9 @@ while anwser =="y":
     print("++++++++++++++++++++++++++++++++++++++++++++++++++++++")
     print(Style.RESET_ALL)
     print("Ouverture de l'interface web")
+    os.system("ipconfig /flushdns")
+    time.sleep(2)
+    os.system("cls")
 
     @app.route('/')
 
