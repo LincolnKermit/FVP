@@ -7,9 +7,10 @@ Dox with the powers of searchs engines!
 
 
 
-<h2> API Added : Root-Me, Github, 118712.fr, Free.fr <h2>
+<h2> API Added : Root-Me, Github, 118712.fr, Free.fr, Yandex <h2>
 <h2> Discord ID : ✅ (NEW)</h2>
 <h2> GeoIp : ✅ </h2>
+<h2> Yandex API : ✅ </h2>
 <h2> IpToDomain ✅</h2>
 <h2> DomainToIp ✅</h2>
 <h2> Partial Discord Token Finder ✅</h2>
