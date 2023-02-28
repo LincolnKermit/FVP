@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>FVP</title>
+        <link rel="icon" href="favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="../static/styles/style.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+    <script>
+    var goToGithub = function(){
+        window.open("https://www.github.com/LincolnKermit/FVP","_blank");
+    };
+    var goToErase = function(){
+        open("/eraseit/")
+    };
+    var goToCall = function(){
+        window.open("tel:{{phone}}","_blank");  
+    };
+    </script>
+    <video autoplay muted loop id="myVideo">
+      <source src={{ url_for('static', filename="op.mp4") }} type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
+    {% if error == False %}
+      <form class="box">
+        <h1><a href="/discord/">Infos Discord</a></h1>
+        <p>📍 <a href="/index/">Infos Adresses et Numéros</a></p>
+        <p>☎️ Téléphone : {{ phone1 }}</p>
+        <form class="icon-delete">
+        <input type="button" name="" value="S'y rendre" class="submit" onclick="goToAddress();">
+        <input type="button" class="submit" name="" value="Appeller" onclick="goToCall();">
+        <input type="button" class="erase" name="" value="Erase it!" onclick="goToErase();">
+        <input type="button" name="" value="Notez notre projet ⭐" class="submit" onclick="goToGithub();">
+        <p>Coded with ❤️</p>
+      </form>
+
+    </div>
+    
+    {% endif %}
+    {% if error == True %}
+    <form class="box">
+      <p>⚠️ Alerte : Peu d'informations trouvés</p>
+      <p>Vous avez peut être été limité!</p>
+    </form>
+    {% endif %}
+    <body>
+</html>
