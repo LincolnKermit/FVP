@@ -1,5 +1,5 @@
 # Made by Lincoln#???? aka github.com/LincolnKermit and Manouzr#???? aka github.com/Manouzr
-# Version 3.4.3
+# Version 3.4.2
 # Should I make a website? send feedback by star!
 # I tried to contact Epieos for their API but no one responded.
 
@@ -34,8 +34,26 @@ dorks_selected                   =NULL
 indexfonction                    ='"'
 anwser                           ="y"
 str(indexfonction)
-messageapi                       ="Yandex Image Searcher available!"
+messageapi                       ="Ajout du bouton erase sur l'affichage web!"
 count = 0
+def yandexapi():
+      n = 0
+      echo=[]
+      textstring=[]
+      imageslink = input("Coller le lien de l'image : ")
+      url = ('https://yandex.ru/images/search?rpt=imageview&url=' + imageslink)
+      response = requests.get(url)
+      print("Status : " + str(response))
+      print("")
+      html = response.content
+      soup = BeautifulSoup(html, "html.parser")
+      for data in soup.find_all("div", {"class": "CbirSites-ItemTitle"}):
+         for a in data.find_all('a'):
+            echo.append(a.get('href'))
+            textstring.append(a.text)
+            print(textstring)
+            print(echo)
+            print('----------------------------------------------------')
 
 os.system("cls")
 notification.notify(
@@ -119,11 +137,75 @@ while anwser =="y":
       if data['banner'] == None:
          print(Fore.RED + "Pas de bannière")
          banner = "Pas de bannière ❌"
+
+
+      url = 'http://annuaire.freebox.fr/annuaire/?tel=' + phone +'&submit_inv=Rechercher'
+      page = urllib.request.urlopen(url, timeout=20)
+      soup = BeautifulSoup(page,features="html.parser")
+      tel = soup.find_all('div', {'class': 'tel'})
+      telephone=[]
+      for e in tel:
+         e=e.text
+         telephone.append(e)
+         e = e.replace('\n', '')
+         res = [str(sub.split('\n')[1]) for sub in telephone]
+         StrNum = "".join(res)
+         print("Numero de telephone :" + str(StrNum).lstrip())
+      nom = soup.find_all('span',{'class': 'bold'})
+      NomDeFamille = []
+      for x in nom:
+         x = x.text
+         NomDeFamille.append(x)
+         x = x.replace('[<span class="bold">', '   </span>, <span class="bold">Free, la société</span>, <span class="bold">Free recrute</span>, <span class="bold">Nous contact')#choisi entre les espace la valeur
+         res1 = [str(sub.split('\n')[1]) for sub in NomDeFamille]#convertion pour extraire les str
+         res2 = [str(sub.split('\n')[2]) for sub in NomDeFamille]
+         StrNomdeFamille = "".join(NomDeFamille)#convertis les str trouvé
+         NomDeFamille_final = str(StrNomdeFamille).strip()
+         break
+      adress = soup.find('div',{'class': 'rue'})
+      List_adress = []
+      adress_text = adress.text
+      List_adress.append(adress_text)
+      adress = adress_text.replace('<div class="rue"> ', ' </div>')
+      adress_final = str(adress).strip()
+
+
+      city = soup.find('div',{'class': 'ville'})
+      List_city = []
+      city_text = city.text
+      List_city.append(city_text)
+      city = city_text.replace('<div class="rue"> ', ' </div>')
+      postal_code = re.sub(r'[^\d]+', '', city) 
+      city = re.sub(r'[^\D]+', '', city) 
+      postal_code_final = str(postal_code).strip()
+      city_final = str(city).strip()
+
       print(Style.RESET_ALL)
       print("Ouverture de l'interface web")
       time.sleep(0.5)
-      @app.route('/discord/')
+
+      
+      @app.route('/')
+      def menu():
+         try:
+            n = 2
+            return render_template("menu.html",github=github,error=False)
+         except:
+            return render_template("menu.html",github=github,error=True)
+         
+      @app.route('/index/')
       def index():
+         try:
+            os.system("ipconfig /flushdns")
+            time.sleep(2)
+            os.system("cls")
+            n = 2
+            return render_template("index.html",github=github,street1=adresses1,lastname1=bloc_nom1["title"],phone1=tel1,error=False)
+         except:
+            return render_template("index.html",github=github,error=True)
+
+      @app.route('/discord/')
+      def discord_page():
          try:
             n = 2
             return render_template("discord.html",github=github,discord_user=discord_user,profile_img=data['avatar'],banner=banner,error=False)
@@ -274,19 +356,7 @@ while anwser =="y":
       time.sleep(2)
       sys.exit()
    if choixversion==choiximages:
-      echo=[]
-      textstring=[]
-      imageslink = input("Coller le lien de l'image : ")
-      url = ('https://yandex.ru/images/search?rpt=imageview&url=' + imageslink)
-      response = requests.get(url)
-      print(response)
-      html = response.content
-      soup = BeautifulSoup(html, "html.parser")
-      for data in soup.find_all("div", {"class": "CbirSites-ItemTitle"}):
-         for a in data.find_all('a'):
-            print(a.get('href'))
-            print(a.text)
-            print('----------------------------------------------------')
+      yandexapi()
       time.sleep(40) 
       
       
