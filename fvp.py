@@ -218,7 +218,7 @@ while anwser =="y":
 
       def eraseit():
          try:
-            return render_template("index.html",street1=adresse2,github=github,discord_user=discord_user,profile_img=data['avatar'],banner=str(data['banner']),error=False)
+            return render_template("index.html",street1=adresses2,github=github,discord_user=discord_user,profile_img=data['avatar'],banner=str(data['banner']),error=False)
          except:
             return render_template("index.html",github=github,error=True)
          
