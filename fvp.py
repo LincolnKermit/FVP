@@ -517,12 +517,12 @@ while anwser =="y":
 
       def index():
          try:
-            os.system("ipconfig /flushdns")
-            time.sleep(2)
-            os.system("cls")
             n = 2
             return render_template("index.html",github=github,street1=adresses1,lastname1=bloc_nom1["title"],phone1=tel1,error=False)
          except:
+            os.system("ipconfig /flushdns")
+            time.sleep(2)
+            os.system("cls")
             return render_template("index.html",github=github,error=True)
       
       
