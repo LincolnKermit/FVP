@@ -14,9 +14,13 @@
     var goToErase = function(){
         open("/eraseit/")
     };
-    var goToCall = function(){
-        window.open("tel:{{phone}}","_blank");  
+    var goToIndex = function(){
+        open("/index/")
     };
+    var goToDiscord = function(){
+        open("/discord/")
+    };
+   
     </script>
     <video autoplay muted loop id="myVideo">
       <source src={{ url_for('static', filename="op.mp4") }} type="video/mp4">
@@ -24,12 +28,12 @@
     </video>
     {% if error == False %}
       <form class="box">
-        <h1><a href="/discord/">Infos Discord</a></h1>
-        <p>📍 <a href="/index/">Infos Adresses et Numéros</a></p>
-        <p>☎️ Téléphone : {{ phone1 }}</p>
+        <h1><a href="/discord/">Discord</a></h1>
+        <p>📍<a href="/index/">Adresses et Numéros</a></p>
+        <p>☎ Yandex : Soon..</p>
         <form class="icon-delete">
-        <input type="button" name="" value="S'y rendre" class="submit" onclick="goToAddress();">
-        <input type="button" class="submit" name="" value="Appeller" onclick="goToCall();">
+        <input type="button" name="" value="Infos Discord" class="submit" onclick="goToDiscord();">
+        <input type="button" class="submit" name="" value="Infos Adresses et Numéros" onclick="goToIndex();">
         <input type="button" class="erase" name="" value="Erase it!" onclick="goToErase();">
         <input type="button" name="" value="Notez notre projet ⭐" class="submit" onclick="goToGithub();">
         <p>Coded with ❤️</p>
