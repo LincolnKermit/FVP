@@ -1,5 +1,5 @@
 # Made by Lincoln#???? aka github.com/LincolnKermit and Manouzr#???? aka github.com/Manouzr
-# Version 3.4.2
+# Version 3.4.3
 # Should I make a website? send feedback by star!
 # I tried to contact Epieos for their API but no one responded.
 
@@ -29,7 +29,7 @@ blank = " "
 github = "https://github.com/LincolnKermit/FVP"
 app = Flask(__name__, static_folder='static')
 keywordfr                        ="fr"
-version                          ="3.4.2 (Private Build)"
+version                          ="3.4.3 (Public Build)"
 dorks_selected                   =NULL
 indexfonction                    ='"'
 anwser                           ="y"
@@ -218,7 +218,7 @@ while anwser =="y":
 
       def eraseit():
          try:
-            return render_template("index.html",github=github,discord_user=discord_user,profile_img=data['avatar'],banner=str(data['banner']),error=False)
+            return render_template("index.html",street1=adresse2,github=github,discord_user=discord_user,profile_img=data['avatar'],banner=str(data['banner']),error=False)
          except:
             return render_template("index.html",github=github,error=True)
          
