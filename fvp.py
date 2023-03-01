@@ -218,7 +218,7 @@ while anwser =="y":
 
       def eraseit():
          try:
-            return render_template("index.html",street1=adresses2,github=github,discord_user=discord_user,profile_img=data['avatar'],banner=str(data['banner']),error=False)
+            return render_template("index.html",github=github,discord_user=discord_user,profile_img=data['avatar'],banner=str(data['banner']),error=False)
          except:
             return render_template("index.html",github=github,error=True)
          
@@ -453,7 +453,6 @@ while anwser =="y":
       print("Recherche dans l'annuaire 118712.fr")
       print("++++++++++++++++++++++++++++++++++++++++++++++++++++++")
       print(Style.RESET_ALL)
-      time.sleep(3)
       results = soup.find_all("div", {"class": "item-info"})
       n = 1
       adresse_home = ""
@@ -495,10 +494,14 @@ while anwser =="y":
 
       Nb_adresse=len(Adresses)
       adresses1 = Adresses[0]
+      if Nb_adresse == 0:
+         adresses1 = 'None'
+      if Nb_adresse == 1:
+         adresses1 = Adresses[0]
       if Nb_adresse > 1:
          adresses2 = Adresses[1]
-         if Nb_adresse > 2:
-            adresses3 = Adresses[2]
+      if Nb_adresse > 2:
+         adresses3 = Adresses[2]
       #async def webmii():
          #time.sleep(10)
          #reqs = requests.get('https://webmii.com/people?n=%22'+ Firstname + '%20' + Lastname + '%22#gsc.tab=0&gsc.q=%22' + Firstname + '%20' + Lastname + '%22&gsc.sort=date')
@@ -517,12 +520,11 @@ while anwser =="y":
 
       def index():
          try:
+            os.system("ipconfig /flushdns")
+            time.sleep(2)
             n = 2
             return render_template("index.html",github=github,street1=adresses1,lastname1=bloc_nom1["title"],phone1=tel1,error=False)
          except:
-            os.system("ipconfig /flushdns")
-            time.sleep(2)
-            os.system("cls")
             return render_template("index.html",github=github,error=True)
       
       
@@ -531,7 +533,7 @@ while anwser =="y":
 
       def eraseit():
          try:
-            return render_template("index.html",github=github,street=adresses2,lastname=bloc_nom2["title"],phone=tel2,error=False)
+            return render_template("index.html",github=github,street1=adresses2,lastname1=bloc_nom2["title"],phone1=tel2,error=False)
          except:
             return render_template("index.html",github=github,error=True)
 
