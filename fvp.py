@@ -1,5 +1,5 @@
 # Made by Lincoln#???? aka github.com/LincolnKermit and Manouzr#???? aka github.com/Manouzr
-# Version 3.4.3
+# Version 3.4.5
 # Should I make a website? send feedback by star!
 # I tried to contact Epieos for their API but no one responded.
 
@@ -29,7 +29,7 @@ blank = " "
 github = "https://github.com/LincolnKermit/FVP"
 app = Flask(__name__, static_folder='static')
 keywordfr                        ="fr"
-version                          ="3.4.3 (Public Build)"
+version                          ="3.4.5 (Public Build)"
 dorks_selected                   =NULL
 indexfonction                    ='"'
 anwser                           ="y"
@@ -49,10 +49,9 @@ def yandexapi():
       soup = BeautifulSoup(html, "html.parser")
       for data in soup.find_all("div", {"class": "CbirSites-ItemTitle"}):
          for a in data.find_all('a'):
-            echo.append(a.get('href'))
-            textstring.append(a.text)
-            print(textstring)
-            print(echo)
+            print(a.get('href'))
+            print(a.text)
+            
             print('----------------------------------------------------')
 
 os.system("cls")
