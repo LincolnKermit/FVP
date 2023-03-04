@@ -411,9 +411,9 @@ while anwser =="y":
       
 
    if choixversion==choixname:
-      Lastname=input(Fore.MAGENTA + "Nom de famille précis : ")
-      Firstname=input(Fore.MAGENTA + "Prénom précis : ")
-      City=input(Fore.MAGENTA + "Code Postal : ")
+      Lastname=str(input(Fore.MAGENTA + "Nom de famille précis : "))
+      Firstname=str(input(Fore.MAGENTA + "Prénom précis : "))
+      City=str(input(Fore.MAGENTA + "Code Postal : "))
       print(Style.RESET_ALL)   
       # Performing google search using Python code
 
