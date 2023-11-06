@@ -2,6 +2,11 @@
 Dox with the powers of searchs engines!
 
 
+
+## THIS PROGRAM HAS BEEN BROKEN BY THE MODifiCATION OF THE STRUCTURE OF 118712.FR
+<h3> Im currently working on it to fix it. Please be patient! ( im also adding compatibility for linux and mac ) </h3>
+
+
 <img src="https://cdn.discordapp.com/attachments/971102399441821706/1062814017682423900/image.png"> </img>
 ![image](https://user-images.githubusercontent.com/104798220/218305301-dae09ada-1ffc-47f7-93d7-fb0b2a48fc1b.png)
 
