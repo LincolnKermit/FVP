@@ -21,7 +21,10 @@ The program is currently experiencing issues due to modifications in the structu
 - **Email**: ✅ (EPIEOS API integration pending)
 - **Email Checker**: ✅ (BETA)
 - **IP Geo**: ✅
-- **Search Engines**: Google, Yandex (Work in Progress), Yahoo, Bing, DuckDuckGo (Status: ❌)
+- **Search Engines**:
+  Google ✅
+  Yandex ✅ (Work in Progress)
+  Yahoo, Bing, DuckDuckGo (Status: ❌)
 
 ## **Installation**
 
