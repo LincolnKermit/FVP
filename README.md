@@ -1,5 +1,5 @@
 # Finder V-Nitro
-Dox with the powers of searchs engines!
+OSINT with the powers of searchs engines!
 
 
 
