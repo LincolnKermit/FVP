@@ -2,8 +2,9 @@ from googlesearch import search
 from flask import Flask, render_template, request
 from colorama import Fore, Back, Style, init
 import time, os, requests
+from bs4 import BeautifulSoup
+from selenium import webdriver
 init()
-
 start = time.time()
 blank = " "
 github = "https://github.com/LincolnKermit/FVP"
@@ -30,8 +31,7 @@ def username_finder():
    response = requests.get('https://root-me.org/' + username)
    if response.status_code == 200:
       print("User found on Root-Me")
-      print("https://root-me.org/" + username)
-      print("")
+      print("https://root-me.org/" + username + "\n")
    elif response.status_code == 404:
       print("User doesn't seems to exist on Root-Me")
 
@@ -39,13 +39,34 @@ def username_finder():
    response = requests.get('https://github.com/' + username)
    if response.status_code == 200:
       print("User found on Github")
-      print("https://github.com/" + username)
-      print("")
+      print("https://github.com/" + username + "\n")
    elif response.status_code == 404:
       print("User doesn't seems to exist on Github")
    input("...")
+   
 def namefinder_api():
-   print("")
+   # not fonctionnal 118712.fr added antibot JS protection.
+   # Help me by pull requests if you know solutions ( which excludes headless browser )
+   lastname = input("Last name : ")
+   city = input("City : ")
+   url = ("https://www.118712.fr/recherche/auto/"+city+"/"+lastname)
+   print(url)
+   response = requests.get(url)
+   html_content = response.content
+
+   # Charger le contenu HTML avec BeautifulSoup
+   soup = BeautifulSoup(html_content, 'html.parser')
+   print(soup)
+
+   # Trouver l'élément <a> avec l'ID "tel_7_ab_test"
+   telephone_element = soup.find('a', {'id': 'tel_7_ab_test'})
+
+   if telephone_element:
+      # Accéder à la balise <span> pour obtenir le numéro de téléphone
+      numero_telephone = telephone_element.find('span', {'class': 'value'}).text.strip()
+      print("Numéro de téléphone trouvé :", numero_telephone)
+   else:
+      print("Élément non trouvé")
 
 
 def googlesearch_api():
@@ -84,8 +105,9 @@ print("Launched!")
 print("1. Google Search \n 2. Name Finder \n 3. Phone searcher")
 choix = input(Fore.MAGENTA + "Choix de valeur?")
 
-if choix == 1:
+if choix == "1":
    googlesearch_api()
-
-
-username_finder()
+if choix == "2":
+   username_finder()
+if choix == "3":
+   namefinder_api()
