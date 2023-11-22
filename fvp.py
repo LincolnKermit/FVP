@@ -1,9 +1,11 @@
+max_num = 10  # Remplacez 10 par le numéro maximal de téléphone à rechercher
 from googlesearch import search
 from flask import Flask, render_template, request
 from colorama import Fore, Back, Style, init
 import time, os, requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
+driver = webdriver.Firefox()
 init()
 start = time.time()
 blank = " "
@@ -44,29 +46,50 @@ def username_finder():
       print("User doesn't seems to exist on Github")
    input("...")
    
+from selenium import webdriver
+from bs4 import BeautifulSoup
+
+
 def namefinder_api():
-   # not fonctionnal 118712.fr added antibot JS protection.
-   # Help me by pull requests if you know solutions ( which excludes headless browser )
-   lastname = input("Last name : ")
-   city = input("City : ")
-   url = ("https://www.118712.fr/recherche/auto/"+city+"/"+lastname)
-   print(url)
-   response = requests.get(url)
-   html_content = response.content
+    lastname = input("Last name: ")
+    city = input("City: ")
 
-   # Charger le contenu HTML avec BeautifulSoup
-   soup = BeautifulSoup(html_content, 'html.parser')
-   print(soup)
+    # Assuming you have initialized your webdriver (driver) before calling this function
+    # driver = webdriver.Chrome()  # Example: Initializing a Chrome webdriver
 
-   # Trouver l'élément <a> avec l'ID "tel_7_ab_test"
-   telephone_element = soup.find('a', {'id': 'tel_7_ab_test'})
+    driver.get(f"https://www.118712.fr/recherche/auto/{city}/{lastname}")
+    html = driver.page_source
+    soup = BeautifulSoup(html, 'html.parser')
 
-   if telephone_element:
-      # Accéder à la balise <span> pour obtenir le numéro de téléphone
-      numero_telephone = telephone_element.find('span', {'class': 'value'}).text.strip()
-      print("Numéro de téléphone trouvé :", numero_telephone)
-   else:
-      print("Élément non trouvé")
+    articles = soup.find_all('article')  # Trouver tous les éléments 'article'
+
+    if not articles:
+        print("No articles found for the given search criteria.")
+        return
+
+    for article in articles:
+        address_element = article.find('address', class_='bi_adress txt_md')
+
+        if address_element:
+            address_elements = address_element.find_all('p')
+            telephone_element = article.find('a', class_='button primary ab_test')
+            name_element = article.find('h2', class_='h4')
+
+            if telephone_element and name_element:
+                address = ' '.join([line.get_text(strip=True) for line in address_elements])
+                numero_telephone = telephone_element.find('span', {'class': 'value'}).text.strip()
+                full_name = name_element.text.strip()
+
+                article_id = article.get('id', 'No ID found')
+                print(f"Details for {article_id}:")
+                print(f"Full Name: {full_name}")
+                print(f"Phone number: {numero_telephone}")
+                print(f"Address: {address}")
+                print("\n")
+            else:
+                print(f"No details found for this article.")
+                print("\n")
+
 
 
 def googlesearch_api():
