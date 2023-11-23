@@ -18,7 +18,8 @@ anwser                           ="y"
 str(indexfonction)
 messageapi                       ="Fix de l'API sur 118712.fr"
 
-
+if ImportError:
+   print("Error while importing libs. Open an Issue.")
 
 def clear():
    if os.name == 'nt':
@@ -126,11 +127,14 @@ clear()
 print("Launched!")
 
 print("1. Google Search \n 2. Name Finder \n 3. Phone searcher")
-choix = input(Fore.MAGENTA + "Choix de valeur?")
+choix = input(Fore.MAGENTA + "Choix de valeur : ")
 
 if choix == "1":
+   clear()
    googlesearch_api()
 if choix == "2":
+   clear()
    username_finder()
 if choix == "3":
+   clear()
    namefinder_api()
