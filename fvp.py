@@ -63,7 +63,7 @@ def namefinder_api():
     soup = BeautifulSoup(html, 'html.parser')
 
     articles = soup.find_all('article')  # Trouver tous les éléments 'article'
-
+    clear()
     if not articles:
         print("No articles found for the given search criteria.")
         return
@@ -80,7 +80,7 @@ def namefinder_api():
                 address = ' '.join([line.get_text(strip=True) for line in address_elements])
                 numero_telephone = telephone_element.find('span', {'class': 'value'}).text.strip()
                 full_name = name_element.text.strip()
-
+                print("\n")
                 article_id = article.get('id', 'No ID found')
                 print(f"Details for {article_id}:")
                 print(f"Full Name: {full_name}")
