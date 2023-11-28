@@ -5,6 +5,7 @@ from colorama import Fore, Back, Style, init
 import time, os, requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
+
 driver = webdriver.Firefox()
 init()
 start = time.time()
@@ -47,8 +48,7 @@ def username_finder():
       print("User doesn't seems to exist on Github")
    input("...")
    
-from selenium import webdriver
-from bs4 import BeautifulSoup
+
 
 
 def namefinder_api():
@@ -138,3 +138,6 @@ if choix == "2":
 if choix == "3":
    clear()
    namefinder_api()
+
+
+
