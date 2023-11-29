@@ -29,15 +29,14 @@ The program is currently experiencing issues due to modifications in the structu
 ## **Installation**
 
 ### Requirements:
-- Ensure you have Python installed on your Windows system. If not, download it from [here](https://www.python.org/downloads/).
-- If you're not an administrator, you can still access Python by typing "python" in the console.
+- Ensure you have Python installed on your system. If not, download it from [here](https://www.python.org/downloads/).
 
 ### Steps:
 1. **Install Libraries**:
-   - Navigate to the program directory and launch `setup.bat`.
+`pip3 install -r requirements.txt`.
 
 2. **Launch Finder V-Nitro**:
-   - Open the command prompt (cmd) in the program's directory.
+   - Open the command prompt in the program's directory.
    - Type `python3 fvp.py` to launch the program.
 
 ![Launch Finder V-Nitro](https://cdn.discordapp.com/attachments/971040198945280000/973723397819338872/unknown.png)
