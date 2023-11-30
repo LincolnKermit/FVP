@@ -1,26 +1,42 @@
-max_num = 10  # Remplacez 10 par le numéro maximal de téléphone à rechercher
-from googlesearch import search
-from flask import Flask, render_template, request
-from colorama import Fore, Back, Style, init
-import time, os, requests
-from bs4 import BeautifulSoup
-from selenium import webdriver
+max_num = 10
+try:
+   from googlesearch import search
+   from flask import Flask, render_template, request
+   from colorama import Fore, Back, Style, init
+   import time, os, requests
+   from bs4 import BeautifulSoup
+   from selenium import webdriver
+   from selenium.common.exceptions import WebDriverException
+   from selenium.webdriver.firefox.options import Options
+except:
+   print("IMPORT ERROR, try to import it manually: \n pip3 install -r requirements \n or \n pip3 install (lib name)")
 
-driver = webdriver.Firefox()
+options = Options()
+options.headless = True
+
+try:
+    driver = webdriver.Firefox(options=options)
+except WebDriverException as e:
+    print("Driver webdriver.Firefox not found. Please make sure you have Firefox installed.")
+    driver_path = input("Enter the path to the Firefox driver (geckodriver): ")
+    try:
+        driver = webdriver.Firefox(executable_path=driver_path, options=options)
+        print("Firefox driver initialized successfully using the provided path.")
+    except WebDriverException as e:
+        print("Error initializing Firefox driver with the provided path. Error:", e)
+
 init()
 start = time.time()
 blank = " "
 github = "https://github.com/LincolnKermit/FVP"
 app = Flask(__name__, static_folder='static')
 keywordfr                        ="fr"
-version                          ="3.5 (Public Build)"
+version                          ="3.6 (Public Build)"
 indexfonction                    ='"'
 anwser                           ="y"
 str(indexfonction)
-messageapi                       ="Fix de l'API sur 118712.fr"
+messageapi                       ="Fix de l'API sur 118712.fr + Fix des bugs sur le driver firefox ( windows plateform )"
 
-if ImportError:
-   print("Error while importing libs. Open an Issue.")
 
 def clear():
    if os.name == 'nt':
@@ -54,7 +70,6 @@ def username_finder():
 def namefinder_api():
     lastname = input("Last name: ")
     city = input("City: ")
-
     # Assuming you have initialized your webdriver (driver) before calling this function
     # driver = webdriver.Chrome()  # Example: Initializing a Chrome webdriver
 
@@ -126,7 +141,7 @@ input("Press Enter to launch Finder V-Pro...")
 clear()
 print("Launched!")
 
-print("1. Google Search \n 2. Name Finder \n 3. Phone searcher")
+print("1. Google Search \n 2. Username Finder \n 3. Name searcher")
 choix = input(Fore.MAGENTA + "Choix de valeur : ")
 
 if choix == "1":
