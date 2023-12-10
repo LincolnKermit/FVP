@@ -1,19 +1,24 @@
 max_num = 10
+import time
+import os
+import requests
+from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.common.exceptions import WebDriverException
+from selenium.webdriver.firefox.options import Options as FirefoxOptions
+
 try:
-   from googlesearch import search
-   from flask import Flask, render_template, request
-   from colorama import Fore, Back, Style, init
-   import time, os, requests
-   from bs4 import BeautifulSoup
-   from selenium import webdriver
-   from selenium.common.exceptions import WebDriverException
-   from selenium.webdriver.firefox.options import Options
-except:
-   print("IMPORT ERROR, try to import it manually: \n pip3 install -r requirements \n or \n pip3 install (lib name)")
+    from googlesearch import search
+    from flask import Flask, render_template, request
+    from colorama import Fore, Back, Style, init
+except ImportError as e:
+    print(f"Error importing module: {e}")
+    print("Please install the required modules using:\n pip install -r requirements.txt")
 
-options = Options()
-options.headless = True
 
+
+options = FirefoxOptions()
+options.add_argument("--headless")
 try:
     driver = webdriver.Firefox(options=options)
 except WebDriverException as e:
