@@ -4,8 +4,6 @@ Finder V-Nitro is an OSINT tool harnessing the power of search engines for infor
 
 ## **Project Status Update**
 
-The program is currently experiencing issues due to modifications in the structure of 118712.fr ( FIXED ) . I am actively working on fixing these issues. Additionally, I'm implementing compatibility for Linux and Mac systems ( Not fixed ). Your patience is appreciated during this process!
-
 ![Finder V-Nitro Screenshot](https://cdn.discordapp.com/attachments/971102399441821706/1062814017682423900/image.png)
 
 ## **APIs and Features**
