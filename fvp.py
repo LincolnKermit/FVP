@@ -43,6 +43,7 @@ str(indexfonction)
 messageapi                       ="Fix de l'API sur 118712.fr + Fix des bugs sur le driver firefox ( windows plateform )"
 
 
+
 def clear():
    if os.name == 'nt':
       os.system("cls")
@@ -114,6 +115,7 @@ def namefinder_api():
 
 
 def googlesearch_api():
+
    try:
       from googlesearch import search
    except ImportError: 
@@ -121,7 +123,7 @@ def googlesearch_api():
    
    query = input("Name to search : ")
    
-   for result in search(query, tld="fr", num=10, stop=10, pause=2):
+   for result in search(query, num=10, stop=10, pause=2):
       print(result + "\n")
 
 
