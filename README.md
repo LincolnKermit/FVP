@@ -16,7 +16,6 @@ WIP - Many functions has been deleted...
 - **DomainToIp**: ✅
 - **Partial Discord Token Finder**: ✅
 - **Annuaire**: ✅ APIs Available: 118712.fr | Free.fr (NEW) | SFR (Coming soon)
-- **Email**: ✅ (EPIEOS API integration pending)
 - **Email Checker**: ✅ (BETA)
 - **IP Geo**: ✅
 - **Search Engines**:
