@@ -1,10 +1,10 @@
-# Finder V-Nitro
+# Finder V-Pro
 
-Finder V-Nitro is an OSINT tool harnessing the power of search engines for information gathering.
+Finder V-Pro is an OSINT tool harnessing the power of search engines for information gathering.
 
 ## **Project Status Update**
 
-WIP - Many functions has been deleted...
+**WIP - Many functions has been deleted...**
 
 ## **APIs and Features**
 
@@ -32,8 +32,8 @@ WIP - Many functions has been deleted...
 1. **Install Libraries**:
 `pip3 install -r requirements.txt`.
 
-2. **Launch Finder V-Nitro**:
+2. **Launch Finder V-Pro**:
    - Open the command prompt in the program's directory.
    - Type `python3 fvp.py` to launch the program.
 
-![Launch Finder V-Nitro](https://cdn.discordapp.com/attachments/971040198945280000/973723397819338872/unknown.png)
+![Launch Finder V-Pro](https://cdn.discordapp.com/attachments/971040198945280000/973723397819338872/unknown.png)
