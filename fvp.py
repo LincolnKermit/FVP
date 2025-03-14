@@ -19,14 +19,12 @@ def username_finder(username):
       elif response.status_code == 404:
          print("User doesn't seem to exist on " + endpoint)
 
-
+"""
 # TO FIX
 def namefinder_api():
     lastname = input("Last name: ")
     city = input("City: ")
-    # Assuming you have initialized your webdriver (driver) before calling this function
-    # driver = webdriver.Chrome()  # Example: Initializing a Chrome webdriver
-
+   from selenium import webdriver
     driver.get(f"https://www.118712.fr/recherche/auto/{city}/{lastname}")
     html = driver.page_source
     soup = BeautifulSoup(html, 'html.parser')
@@ -58,26 +56,28 @@ def namefinder_api():
             else:
                 print(f"No details found for this article.")
                 print("\n")
-
+"""
 
 
 def googlesearch_api(query):
-   for result in search(query, num=10, stop=10, pause=2):
+   for result in search(query):
       print(result + "\n")
 
 
 
 
-print("1. Google Search \n 2. Username Finder \n 3. Name searcher")
-choix = input(Fore.MAGENTA + "Choix de valeur : ")
-
-if choix == "1":
-   googlesearch_api()
-if choix == "2":
-   temp_user_value = input("Username : ")
-   username_finder(temp_user_value)
-if choix == "3":
-   namefinder_api()
+while True:
+   choix = None
+   print("1. Google Search \n 2. Username Finder \n 3. Name searcher")
+   choix = input(Fore.MAGENTA + "Choix de valeur : ")
+   if choix == "1":
+      query = input("Query : ")
+      googlesearch_api(query)
+   if choix == "2":
+      temp_user_value = input("Username : ")
+      username_finder(temp_user_value)
+   """if choix == "3":
+      namefinder_api()"""
 
 
 
