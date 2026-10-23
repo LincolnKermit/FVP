@@ -4,7 +4,7 @@ Finder V-Nitro is an OSINT tool harnessing the power of search engines for infor
 
 ## **Project Status Update**
 
-WIP - Many functions has been deleted...
+This project has been archived due to a lack of maintainers and changes in the underlying libraries and search engines.
 
 ## **APIs and Features**
 
@@ -20,8 +20,7 @@ WIP - Many functions has been deleted...
 - **IP Geo**: ✅
 - **Search Engines**:
   Google ✅
-  Yandex ✅ (Work in Progress)
-  Yahoo, Bing, DuckDuckGo (Status: ❌)
+  Yandex ✅
 
 ## **Installation**
 
@@ -36,4 +35,3 @@ WIP - Many functions has been deleted...
    - Open the command prompt in the program's directory.
    - Type `python3 fvp.py` to launch the program.
 
-![Launch Finder V-Nitro](https://cdn.discordapp.com/attachments/971040198945280000/973723397819338872/unknown.png)
